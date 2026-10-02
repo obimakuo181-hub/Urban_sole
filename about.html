@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Me | Urban Sole</title>
+
+  <!-- Import Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================
+       RESET & BASE
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:
+        'Plus Jakarta Sans',
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0b111e;
+
+      background-image:
+        radial-gradient(
+          at 15% 20%,
+          rgba(0, 210, 196, 0.12) 0px,
+          transparent 50%
+        ),
+        radial-gradient(
+          at 85% 80%,
+          rgba(15, 23, 42, 0.8) 0px,
+          transparent 50%
+        );
+
+      background-attachment: fixed;
+
+      color: #ffffff;
+
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .about-nav {
+      width: 100%;
+
+      padding: 20px 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+      background: rgba(11, 17, 30, 0.75);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      position: sticky;
+      top: 0;
+
+      z-index: 1000;
+
+      animation: navFadeIn 0.7s ease forwards;
+    }
+
+
+    .back-home {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+
+      color: #00d2c4;
+
+      text-decoration: none;
+
+      font-weight: 600;
+      font-size: 0.9rem;
+
+      letter-spacing: 0.3px;
+
+      padding: 8px 0;
+
+      transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+
+    .back-home::after {
+      content: '';
+
+      position: absolute;
+
+      left: 0;
+      bottom: 2px;
+
+      width: 0;
+      height: 2px;
+
+      background-color: #00d2c4;
+
+      border-radius: 2px;
+
+      transition: width 0.3s ease;
+    }
+
+
+    .back-home:hover {
+      color: #ffffff;
+      transform: translateX(-3px);
+    }
+
+
+    .back-home:hover::after {
+      width: 100%;
+    }
+
+
+    /* =========================
+       MAIN ABOUT SECTION
+    ========================= */
+
+    .about-container {
+      width: 90%;
+      max-width: 1100px;
+
+      margin: auto;
+
+      padding: 70px 24px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 60px;
+
+      flex: 1;
+    }
+
+
+    /* =========================
+       ABOUT CONTENT
+    ========================= */
+
+    .about-content {
+      flex: 1;
+
+      max-width: 560px;
+
+      opacity: 0;
+
+      transform: translateY(40px);
+
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+
+    .about-content.active {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    .about-title {
+      font-size: 3rem;
+
+      font-weight: 700;
+
+      color: #00d2c4;
+
+      margin-bottom: 24px;
+
+      letter-spacing: -1px;
+
+      line-height: 1.1;
+
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.8s ease 0.15s,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    }
+
+
+    .about-content.active .about-title {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    .about-text {
+      font-size: 1.05rem;
+
+      line-height: 1.8;
+
+      color: #cbd5e1;
+
+      margin-bottom: 36px;
+
+      font-weight: 400;
+
+      letter-spacing: 0.2px;
+
+      opacity: 0;
+
+      transform: translateY(25px);
+
+      transition:
+        opacity 0.8s ease 0.3s,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    }
+
+
+    .about-content.active .about-text {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    /* =========================
+       CONTACT BUTTON
+    ========================= */
+
+    .contact-btn {
+      display: inline-block;
+
+      padding: 14px 32px;
+
+      border: 2px solid #00d2c4;
+
+      color: #ffffff;
+
+      text-decoration: none;
+
+      border-radius: 8px;
+
+      font-weight: 600;
+
+      font-size: 0.95rem;
+
+      letter-spacing: 0.3px;
+
+      background: transparent;
+
+      opacity: 0;
+
+      transform: translateY(20px);
+
+      transition:
+        opacity 0.8s ease 0.45s,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s,
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+
+    .about-content.active .contact-btn {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    .contact-btn:hover {
+      background-color: #00d2c4;
+
+      color: #0b111e;
+
+      box-shadow:
+        0 0 20px rgba(0, 210, 196, 0.4);
+
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================
+       ABOUT IMAGE
+    ========================= */
+
+    .about-image-wrapper {
+      flex: 1;
+
+      display: flex;
+
+      justify-content: center;
+
+      opacity: 0;
+
+      transform: translateX(40px);
+
+      transition:
+        opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+
+    .about-image-wrapper.active {
+      opacity: 1;
+
+      transform: translateX(0);
+    }
+
+
+    .about-img {
+      width: 100%;
+
+      max-width: 380px;
+
+      height: 460px;
+
+      object-fit: cover;
+
+      border-radius: 16px;
+
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      box-shadow:
+        0 0 30px rgba(0, 210, 196, 0.15);
+
+      transition:
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.5s ease;
+    }
+
+
+    .about-img:hover {
+      transform: translateY(-6px) scale(1.015);
+
+      box-shadow:
+        0 15px 40px rgba(0, 210, 196, 0.2),
+        0 0 30px rgba(0, 210, 196, 0.15);
+    }
+
+
+    /* =========================
+       SUBTLE BACKGROUND GLOW
+    ========================= */
+
+    .about-container::before {
+      content: '';
+
+      position: fixed;
+
+      width: 300px;
+      height: 300px;
+
+      top: 35%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      background: rgba(0, 210, 196, 0.035);
+
+      filter: blur(80px);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+
+      z-index: -1;
+    }
+
+
+    /* =========================
+       NAV FADE
+    ========================= */
+
+    @keyframes navFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 768px) {
+
+      .about-nav {
+        padding: 18px 20px;
+      }
+
+
+      .about-container {
+        width: 100%;
+
+        flex-direction: column-reverse;
+
+        text-align: center;
+
+        padding: 50px 20px;
+
+        gap: 40px;
+      }
+
+
+      .about-content {
+        max-width: 600px;
+
+        transform: translateY(35px);
+      }
+
+
+      .about-title {
+        font-size: 2.3rem;
+      }
+
+
+      .about-text {
+        font-size: 0.95rem;
+
+        line-height: 1.7;
+      }
+
+
+      .about-image-wrapper {
+        transform: translateY(35px);
+      }
+
+
+      .about-image-wrapper.active {
+        transform: translateY(0);
+      }
+
+
+      .about-img {
+        max-width: 280px;
+
+        height: 340px;
+      }
+
+    }
+
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <header class="about-nav">
+
+    <a
+      href="index.html"
+      class="back-home"
+    >
+      &larr; Back to Shop
+    </a>
+
+  </header>
+
+
+  <!-- =========================
+       ABOUT CONTENT
+  ========================= -->
+
+  <main class="about-container">
+
+    <section class="about-content">
+
+      <h1 class="about-title">
+        About Me
+      </h1>
+
+      <p class="about-text">
+        Driven by a passion for sneaker culture and sustainable streetwear, I curate premium, pre-loved footwear that gives iconic kicks a second life. I specialize in sourcing authentic, high-quality thrifted shoes—bringing you rare gems, timeless classics, and everyday wear without full retail prices. Step up your style and build your collection, one pair at a time.
+      </p>
+
+      <a
+        href="mailto:contact@urbansole.com"
+        class="contact-btn"
+      >
+        Contact Me
+      </a>
+
+    </section>
+
+
+    <figure class="about-image-wrapper">
+
+      <img
+        src="/assets/image.png"
+        alt="Profile Photo"
+        class="about-img"
+      >
+
+    </figure>
+
+  </main>
+
+
+  <!-- =========================
+       SCROLL REVEAL
+  ========================= -->
+
+<script src="/about.js"></script>
+
+</body>
+</html>

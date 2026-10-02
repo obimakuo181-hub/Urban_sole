@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Sole</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      
+      <a href="#" class="nav-logo">
+        <img src="assets/5884026533653974931.jpg" alt="iThrift Logo" class="logo-img">
+        <span class="brand-name">Urban Sole</span>
+      </a>
+
+        <nav class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="#featured" class="nav-link">Shop</a>
+      <a href="#featured" class="nav-link">New Arrivals</a>
+      <a href="about.html" class="nav-link">About</a>
+     <a href="/contact.html" class="nav-link">Contact</a>
+    </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="search-toggle-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <a href="contact.html" class="icon-btn" aria-label="Contact Us">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+        <button class="icon-btn cart-btn" id="cart-btn" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Banner Section -->
+  <section class="hero-banner">
+    <div class="hero-bg-wrapper">
+      <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1400" alt="Hero Sneaker Background" class="hero-bg-img">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content-overlay">
+      <h1 class="hero-title">Step Into<br>Your Style</h1>
+      <p class="hero-description">Premium Sneakers for Every Mindset</p>
+      <a href="#featured" class="shop-now-btn">Shop Now &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Featured Products & Controls Section -->
+  <section class="featured-section" id="featured">
+    <div class="container">
+      
+      <div class="section-header">
+        <h2 class="section-title">Featured Sneakers (<span id="total-count">0</span>)</h2>
+        <a href="#" class="view-all-link" id="reset-filters">View All &rarr;</a>
+      </div>
+
+      <div class="filter-bar">
+        <div class="search-input-wrapper">
+          <input type="text" id="search-input" placeholder="Search sneakers by name..." />
+        </div>
+
+        <div class="filter-pills">
+          <button class="pill-btn active" data-filter="all">All</button>
+          <button class="pill-btn" data-filter="New">New</button>
+          <button class="pill-btn" data-filter="Sale">Sale</button>
+          <button class="pill-btn" data-filter="Popular">Popular</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+
+    </div>
+  </section>
+
+  <!-- Slide-Out Shopping Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Shopping Cart (<span id="cart-drawer-count">0</span>)</h3>
+      <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+    </div>
+
+    <div class="cart-items" id="cart-items">
+      <p class="empty-cart-msg">Your cart is currently empty.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal:</span>
+        <span id="cart-subtotal-price">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="open-checkout-btn">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="product-modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" id="close-product-modal">&times;</button>
+      <div class="modal-product-layout">
+        <div class="modal-img-wrapper">
+          <img id="modal-product-img" src="" alt="">
+        </div>
+        <div class="modal-info">
+          <span class="badge" id="modal-product-badge"></span>
+          <h2 id="modal-product-title"></h2>
+          <p class="modal-price" id="modal-product-price"></p>
+          <p class="modal-desc">Engineered for comfort and high-street style. Features premium materials, responsive cushioning, and signature durability.</p>
+          <button class="shop-now-btn" id="modal-add-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkout-modal-overlay">
+    <div class="modal-box checkout-box">
+      <button class="modal-close" id="close-checkout-modal">&times;</button>
+      <h2>Checkout Order</h2>
+      <form id="checkout-form" class="checkout-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label>Shipping Address</label>
+          <input type="text" placeholder="123 Main St, City" required>
+        </div>
+        <div class="form-group">
+          <label>Card Details</label>
+          <input type="text" placeholder="4000 0000 0000 0000" required>
+        </div>
+        <div class="checkout-total">
+          <span>Total:</span>
+          <strong id="checkout-total-price">$0.00</strong>
+        </div>
+        <button type="submit" class="checkout-btn">Complete Purchase</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer" id="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3>Urban Sole</h3>
+        <p>Premium footwear designed for performance, comfort, and street style.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#featured">Shop Catalog</a></li>
+          <li><a href="#featured">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+
+        <p>
+          <a href="contact.html">Contact Us</a>
+        </p>
+
+        <p>Email: support@urbansole.com</p>
+        <p>Phone: +1 (800) 555-SOLE</p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Urban Sole. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+    ↑
+  </button>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "https://jdqlviwvvpflsvrgpxel.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_v2tDT3hfrp8x26ES5Z6lhA_E_t1zZTM";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+</script>
+
+<!-- Your existing JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
