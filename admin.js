@@ -14,6 +14,53 @@ const productMessage = document.getElementById("product-message");
 const inventoryList = document.getElementById("inventory-list");
 
 let editingProductId = null;
+// ================================
+// CHECK EXISTING LOGIN SESSION
+// ================================
+
+async function checkAdminSession() {
+
+  const { data, error } =
+    await supabaseClient.auth.getSession();
+
+  if (error) {
+    console.error("Session error:", error);
+    return;
+  }
+
+  const session = data.session;
+
+  if (session) {
+    // User is already logged in
+    loginSection.style.display = "none";
+    adminSection.style.display = "block";
+
+    await loadInventory();
+
+  } else {
+    // User is not logged in
+    loginSection.style.display = "block";
+    adminSection.style.display = "none";
+  }
+}
+
+checkAdminSession();
+
+// ================================
+// LISTEN FOR AUTH CHANGES
+// ================================
+
+supabaseClient.auth.onAuthStateChange((event, session) => {
+
+  if (session) {
+    loginSection.style.display = "none";
+    adminSection.style.display = "block";
+  } else {
+    adminSection.style.display = "none";
+    loginSection.style.display = "block";
+  }
+
+});
 
 
 // ================================
@@ -82,7 +129,36 @@ productForm.addEventListener("submit", async (event) => {
     isEditing
       ? "Updating product..."
       : "Adding product...";
+    const photoInput = document.getElementById("product-photo");
+    const photoFile = photoInput.files[0];
 
+    let photoUrl = null;
+    // Upload photo if one was selected
+if (photoFile) {
+
+  productMessage.textContent = "Uploading photo...";
+
+  const fileExtension = photoFile.name.split(".").pop();
+
+  const fileName =
+    `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExtension}`;
+
+  const { error: uploadError } = await supabaseClient.storage
+    .from("product-images")
+    .upload(fileName, photoFile);
+
+  if (uploadError) {
+    console.error("Image upload error:", uploadError);
+    productMessage.textContent = "Could not upload image.";
+    return;
+  }
+
+  const { data: publicUrlData } = supabaseClient.storage
+    .from("product-images")
+    .getPublicUrl(fileName);
+
+  photoUrl = publicUrlData.publicUrl;
+}
 
   const productData = {
 
@@ -135,6 +211,9 @@ productForm.addEventListener("submit", async (event) => {
     status:
       document.getElementById("product-status").value
   };
+  if (photoUrl) {
+  productData.photos = [photoUrl];
+  }
 
 
   let error;
@@ -155,7 +234,7 @@ productForm.addEventListener("submit", async (event) => {
   // ADD NEW PRODUCT
   else {
 
-    productData.photos = [];
+  
 
     const result = await supabaseClient
       .from("products")
@@ -236,6 +315,41 @@ async function loadInventory() {
 
     return;
   }
+
+  // ================================
+// UPDATE DASHBOARD STATS
+// ================================
+
+const totalProducts = data.length;
+
+const availableProducts = data.filter(
+  product => product.status?.toLowerCase() === "available"
+).length;
+
+const soldProducts = data.filter(
+  product => product.status?.toLowerCase() === "sold"
+).length;
+
+const lowStockProducts = data.filter(
+  product => Number(product.quantity) <= 1
+).length;
+
+
+document.getElementById(
+  "total-products-stat"
+).textContent = totalProducts;
+
+document.getElementById(
+  "available-products-stat"
+).textContent = availableProducts;
+
+document.getElementById(
+  "sold-products-stat"
+).textContent = soldProducts;
+
+document.getElementById(
+  "low-stock-stat"
+).textContent = lowStockProducts;
 
 
   if (data.length === 0) {
