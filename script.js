@@ -74,7 +74,67 @@ async function loadProductsFromSupabase() {
     status: product.status
   }));
 
+  validateCartStock();
+
   renderShoes();
+
+  updateCartUI();
+}
+
+function validateCartStock() {
+
+  let cartChanged = false;
+
+  cart = cart.filter(cartItem => {
+
+    const product = shoesData.find(
+      shoe => shoe.id === cartItem.id
+    );
+
+    // Product no longer exists
+    if (!product) {
+      cartChanged = true;
+      return false;
+    }
+
+    // Product is sold out
+    if (
+      product.stockQuantity <= 0 ||
+      product.status?.toLowerCase() === "sold"
+    ) {
+      cartChanged = true;
+      return false;
+    }
+
+    // Customer has more in cart than currently available
+    if (cartItem.quantity > product.stockQuantity) {
+
+      cartItem.quantity = product.stockQuantity;
+
+      cartChanged = true;
+    }
+
+    // Update cart with latest product information
+    cartItem.name = product.name;
+    cartItem.rawPrice = product.rawPrice;
+    cartItem.price = product.price;
+    cartItem.image = product.image;
+    cartItem.size = product.size;
+    cartItem.stockQuantity = product.stockQuantity;
+    cartItem.status = product.status;
+
+    return true;
+  });
+
+
+  if (cartChanged) {
+
+    localStorage.setItem(
+      "urbanSoleCart",
+      JSON.stringify(cart)
+    );
+
+  }
 }
 
 
@@ -182,13 +242,19 @@ function renderShoes() {
             </h3>
 
             <button
-              class="add-to-cart-btn"
+              class="add-to-cart-btn ${shoe.stockQuantity <= 0 || shoe.status?.toLowerCase() === "sold" ? "sold-out-btn" : ""}"
               onclick="
                 event.stopPropagation();
                 addToCart(${shoe.id})
               "
+              ${shoe.stockQuantity <= 0 || shoe.status?.toLowerCase() === "sold" ? "disabled" : ""}
             >
-              Add to Cart
+              ${
+                shoe.stockQuantity <= 0 ||
+                shoe.status?.toLowerCase() === "sold"
+                  ? "SOLD OUT"
+                  : "Add to Cart"
+              }
             </button>
 
           </div>
@@ -277,11 +343,41 @@ function addToCart(shoeId) {
   if (!shoe) return;
 
 
+  // Check if product is sold out
+  if (
+    shoe.stockQuantity <= 0 ||
+    shoe.status?.toLowerCase() === "sold"
+  ) {
+
+    showToast(`${shoe.name} is sold out.`);
+
+    return;
+  }
+
+
   const existingIndex =
     cart.findIndex(item => item.id === shoeId);
 
 
+  // Product already exists in cart
   if (existingIndex > -1) {
+
+    const currentCartQuantity =
+      Number(cart[existingIndex].quantity) || 0;
+
+
+    // Don't allow more than available stock
+    if (
+      currentCartQuantity >= shoe.stockQuantity
+    ) {
+
+      showToast(
+        `Only ${shoe.stockQuantity} pair(s) available.`
+      );
+
+      return;
+    }
+
 
     cart[existingIndex].quantity += 1;
 
@@ -363,15 +459,48 @@ function changeQuantity(index, amount) {
 
   if (!cart[index]) return;
 
-  cart[index].quantity += amount;
+
+  const item = cart[index];
+
+  const newQuantity =
+    Number(item.quantity) + amount;
 
 
-  if (cart[index].quantity <= 0) {
+  // Remove item if quantity reaches 0
+  if (newQuantity <= 0) {
 
     cart.splice(index, 1);
 
+    saveCart();
+
+    updateCartUI();
+
+    return;
   }
 
+
+  // Find latest product information
+  const product =
+    shoesData.find(
+      shoe => shoe.id === item.id
+    );
+
+
+  // Check available stock
+  if (
+    product &&
+    newQuantity > product.stockQuantity
+  ) {
+
+    showToast(
+      `Only ${product.stockQuantity} pair(s) available.`
+    );
+
+    return;
+  }
+
+
+  item.quantity = newQuantity;
 
   saveCart();
 
