@@ -13,6 +13,17 @@ const productForm = document.getElementById("product-form");
 const productMessage = document.getElementById("product-message");
 const inventoryList = document.getElementById("inventory-list");
 const ordersList = document.getElementById("orders-list");
+const totalOrdersStat =
+  document.getElementById("total-orders-stat");
+
+const pendingOrdersStat =
+  document.getElementById("pending-orders-stat");
+
+const paidOrdersStat =
+  document.getElementById("paid-orders-stat");
+
+const revenueStat =
+  document.getElementById("revenue-stat");
 let editingProductId = null;
 // ================================
 // CHECK EXISTING LOGIN SESSION
@@ -599,6 +610,59 @@ async function loadOrders() {
 
     return;
   }
+  // ================================
+// ORDER STATISTICS
+// ================================
+
+const totalOrders = data.length;
+
+
+const pendingOrders =
+  data.filter(order =>
+    order.payment_status?.toLowerCase() === "pending"
+  ).length;
+
+
+const paidOrders =
+  data.filter(order =>
+    order.payment_status?.toLowerCase() === "paid"
+  ).length;
+
+
+const totalRevenue =
+  data
+    .filter(order =>
+      order.payment_status?.toLowerCase() === "paid"
+    )
+    .reduce(
+      (total, order) =>
+        total + Number(order.total || 0),
+      0
+    );
+
+
+if (totalOrdersStat) {
+  totalOrdersStat.textContent =
+    totalOrders;
+}
+
+
+if (pendingOrdersStat) {
+  pendingOrdersStat.textContent =
+    pendingOrders;
+}
+
+
+if (paidOrdersStat) {
+  paidOrdersStat.textContent =
+    paidOrders;
+}
+
+
+if (revenueStat) {
+  revenueStat.textContent =
+    `₦${totalRevenue.toLocaleString()}`;
+}
 
 
   if (data.length === 0) {

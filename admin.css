@@ -272,6 +272,16 @@ select {
 
   margin-bottom: 30px;
 }
+.order-overview {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
 
 .stat-card {
   background: white;
@@ -632,10 +642,11 @@ select {
 
 @media (max-width: 1050px) {
 
-  .dashboard-overview {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
+ .dashboard-overview,
+.order-overview {
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+}
 
   .inventory-grid {
     grid-template-columns:
@@ -689,9 +700,10 @@ select {
 
 @media (max-width: 550px) {
 
-  .dashboard-overview {
-    grid-template-columns: 1fr;
-  }
+  .dashboard-overview,
+  .order-overview {
+  grid-template-columns: 1fr;
+}
 
   .inventory-grid {
     grid-template-columns: 1fr;
