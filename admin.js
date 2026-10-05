@@ -781,3 +781,54 @@ async function loadOrders() {
   });
 
 }
+// ================================
+// CONFIRM ORDER PAYMENT
+// ================================
+
+async function confirmPayment(orderId) {
+
+  const confirmed = confirm(
+    `Confirm payment for Order #${orderId}?\n\n` +
+    `Only continue if you have received and verified the customer's payment.`
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  const { error } =
+    await supabaseClient.rpc(
+      "confirm_order_payment",
+      {
+        p_order_id: orderId
+      }
+    );
+
+
+  if (error) {
+
+    console.error(
+      "Payment confirmation error:",
+      error
+    );
+
+    alert(
+      "Payment could not be confirmed.\n\n" +
+      error.message
+    );
+
+    return;
+  }
+
+
+  alert(
+    `Order #${orderId} payment confirmed successfully.`
+  );
+
+
+  // Refresh orders and inventory
+  await loadOrders();
+  await loadInventory();
+
+}
