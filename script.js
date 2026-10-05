@@ -1232,11 +1232,11 @@ document.addEventListener(
       .getElementById(
         "checkout-form"
       )
-      ?.addEventListener(
-        "submit",
-        event => {
+     ?.addEventListener(
+      "submit",
+      async event => {
 
-          event.preventDefault();
+        event.preventDefault();
 
 
           // Customer details
@@ -1291,7 +1291,101 @@ document.addEventListener(
             return;
           }
 
+            // =================================
+// CALCULATE ORDER TOTAL
+// =================================
 
+let orderTotal = 0;
+
+cart.forEach(item => {
+
+  const quantity =
+    Number(item.quantity) || 1;
+
+  const price =
+    Number(item.rawPrice) || 0;
+
+  orderTotal += price * quantity;
+
+});
+
+
+// =================================
+// PREPARE ORDER ITEMS
+// =================================
+
+const orderItems = cart.map(item => ({
+
+  product_id: item.id,
+
+  name: item.name,
+
+  size: item.size || "Not specified",
+
+  quantity:
+    Number(item.quantity) || 1,
+
+  price:
+    Number(item.rawPrice) || 0
+
+}));
+
+
+// =================================
+// SAVE ORDER TO SUPABASE
+// =================================
+
+const { error: orderError } =
+  await supabaseClient
+    .from("orders")
+    .insert({
+
+      customer_name:
+        customerName,
+
+      customer_phone:
+        customerPhone,
+
+      delivery_address:
+        customerAddress,
+
+      items:
+        orderItems,
+
+      total:
+        orderTotal,
+
+      payment_status:
+        "pending",
+
+      order_status:
+        "pending"
+
+    });
+
+
+// =================================
+// CHECK IF ORDER SAVED
+// =================================
+
+if (orderError) {
+
+  console.error(
+    "Error saving order:",
+    orderError
+  );
+
+  alert(
+    "We could not create your order. Please try again."
+  );
+
+  return;
+}
+
+
+console.log(
+  "Order created successfully."
+);
           // =================================
           // BUILD WHATSAPP MESSAGE
           // =================================

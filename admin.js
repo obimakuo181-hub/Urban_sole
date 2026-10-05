@@ -12,7 +12,7 @@ const logoutBtn = document.getElementById("logout-btn");
 const productForm = document.getElementById("product-form");
 const productMessage = document.getElementById("product-message");
 const inventoryList = document.getElementById("inventory-list");
-
+const ordersList = document.getElementById("orders-list");
 let editingProductId = null;
 // ================================
 // CHECK EXISTING LOGIN SESSION
@@ -36,6 +36,7 @@ async function checkAdminSession() {
     adminSection.style.display = "block";
 
     await loadInventory();
+    await loadOrders();
 
   } else {
     // User is not logged in
@@ -97,6 +98,7 @@ loginForm.addEventListener("submit", async (event) => {
 
   // Load products AFTER successful login
   await loadInventory();
+  await loadOrders();
 });
 
 
@@ -563,4 +565,219 @@ async function deleteProduct(productId) {
 
 
   await loadInventory();
+}
+// ================================
+// LOAD ORDERS
+// ================================
+
+async function loadOrders() {
+
+  if (!ordersList) return;
+
+  ordersList.innerHTML =
+    "<p>Loading orders...</p>";
+
+
+  const { data, error } =
+    await supabaseClient
+      .from("orders")
+      .select("*")
+      .order("created_at", {
+        ascending: false
+      });
+
+
+  if (error) {
+
+    console.error(
+      "Error loading orders:",
+      error
+    );
+
+    ordersList.innerHTML =
+      "<p>Could not load orders.</p>";
+
+    return;
+  }
+
+
+  if (data.length === 0) {
+
+    ordersList.innerHTML =
+      "<p>No orders yet.</p>";
+
+    return;
+  }
+
+
+  ordersList.innerHTML = "";
+
+
+  data.forEach(order => {
+
+    const orderCard =
+      document.createElement("div");
+
+    orderCard.className =
+      "order-card";
+
+
+    // Format date
+    const orderDate =
+      new Date(
+        order.created_at
+      ).toLocaleString();
+
+
+    // Build products inside order
+    const itemsHTML =
+      Array.isArray(order.items)
+
+        ? order.items
+            .map(item => {
+
+              const quantity =
+                Number(item.quantity) || 1;
+
+              const price =
+                Number(item.price) || 0;
+
+              const subtotal =
+                price * quantity;
+
+
+              return `
+                <div class="order-item">
+
+                  <strong>
+                    ${item.name}
+                  </strong>
+
+                  <p>
+                    Size:
+                    ${item.size || "Not specified"}
+                  </p>
+
+                  <p>
+                    Quantity:
+                    ${quantity}
+                  </p>
+
+                  <p>
+                    ₦${price.toLocaleString()}
+                    each
+                  </p>
+
+                  <p>
+                    Subtotal:
+                    ₦${subtotal.toLocaleString()}
+                  </p>
+
+                </div>
+              `;
+
+            })
+            .join("")
+
+        : "<p>No product information.</p>";
+
+
+    const paymentStatus =
+      order.payment_status ||
+      "pending";
+
+
+    orderCard.innerHTML = `
+
+      <div class="order-card-header">
+
+        <div>
+
+          <h3>
+            Order #${order.id}
+          </h3>
+
+          <p class="order-date">
+            ${orderDate}
+          </p>
+
+        </div>
+
+
+        <span
+          class="order-status ${paymentStatus.toLowerCase()}"
+        >
+          ${paymentStatus}
+        </span>
+
+      </div>
+
+
+      <div class="order-customer">
+
+        <p>
+          <strong>Customer:</strong>
+          ${order.customer_name}
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          ${order.customer_phone}
+        </p>
+
+        <p>
+          <strong>Delivery Address:</strong>
+          ${order.delivery_address}
+        </p>
+
+      </div>
+
+
+      <div class="order-items">
+
+        ${itemsHTML}
+
+      </div>
+
+
+      <div class="order-total">
+
+        <strong>
+          Total:
+          ₦${Number(order.total).toLocaleString()}
+        </strong>
+
+      </div>
+
+
+      ${
+        paymentStatus.toLowerCase() === "pending"
+
+          ? `
+            <button
+              class="confirm-payment-btn"
+              onclick="confirmPayment(${order.id})"
+            >
+              Confirm Payment
+            </button>
+          `
+
+          : `
+            <p>
+              <strong>
+                Payment Confirmed ✓
+              </strong>
+            </p>
+          `
+      }
+
+    `;
+
+
+    ordersList.appendChild(
+      orderCard
+    );
+
+  });
+
 }
