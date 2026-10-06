@@ -888,27 +888,47 @@ filteredOrders.forEach(order => {
       </div>
 
 
-      ${
-        paymentStatus.toLowerCase() === "pending"
+    ${
+  paymentStatus.toLowerCase() === "pending"
 
-          ? `
-            <button
-              class="confirm-payment-btn"
-              onclick="confirmPayment(${order.id})"
-            >
-              Confirm Payment
-            </button>
-          `
+    ? `
+      <div class="order-actions">
 
-          : `
-            <p>
-              <strong>
-                Payment Confirmed ✓
-              </strong>
-            </p>
-          `
-      }
+        <button
+          class="confirm-payment-btn"
+          onclick="confirmPayment(${order.id})"
+        >
+          Confirm Payment
+        </button>
 
+        <button
+          class="cancel-order-btn"
+          onclick="cancelOrder(${order.id})"
+        >
+          Cancel Order
+        </button>
+
+      </div>
+    `
+
+    : paymentStatus.toLowerCase() === "paid"
+
+      ? `
+        <p>
+          <strong>
+            Payment Confirmed ✓
+          </strong>
+        </p>
+      `
+
+      : `
+        <p>
+          <strong>
+            Order Cancelled
+          </strong>
+        </p>
+      `
+}
     `;
 
 
@@ -1020,5 +1040,58 @@ if (orderSearchInput) {
 
     }
   );
+
+}
+// ================================
+// CANCEL ORDER
+// ================================
+
+async function cancelOrder(orderId) {
+
+  const confirmed = confirm(
+    `Cancel Order #${orderId}?\n\n` +
+    `This should only be used for unpaid orders.`
+  );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  const { error } =
+    await supabaseClient
+      .from("orders")
+      .update({
+        payment_status: "cancelled",
+        order_status: "cancelled"
+      })
+      .eq("id", orderId)
+      .eq("payment_status", "pending");
+
+
+  if (error) {
+
+    console.error(
+      "Order cancellation error:",
+      error
+    );
+
+    alert(
+      "Order could not be cancelled.\n\n" +
+      error.message
+    );
+
+    return;
+  }
+
+
+  alert(
+    `Order #${orderId} has been cancelled.`
+  );
+
+
+  // Refresh orders
+  await loadOrders();
 
 }
