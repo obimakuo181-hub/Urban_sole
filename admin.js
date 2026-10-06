@@ -13,6 +13,18 @@ const productForm = document.getElementById("product-form");
 const productMessage = document.getElementById("product-message");
 const inventoryList = document.getElementById("inventory-list");
 const ordersList = document.getElementById("orders-list");
+const orderFilterButtons =
+  document.querySelectorAll(
+    ".order-filter-btn"
+  );
+
+let currentOrderFilter = "all";
+const orderSearchInput =
+  document.getElementById(
+    "order-search-input"
+  );
+
+let currentOrderSearch = "";
 const totalOrdersStat =
   document.getElementById("total-orders-stat");
 
@@ -665,19 +677,81 @@ if (revenueStat) {
 }
 
 
-  if (data.length === 0) {
+ if (data.length === 0) {
 
-    ordersList.innerHTML =
-      "<p>No orders yet.</p>";
+  ordersList.innerHTML =
+    "<p>No orders yet.</p>";
 
-    return;
-  }
-
-
-  ordersList.innerHTML = "";
+  return;
+}
 
 
-  data.forEach(order => {
+// ================================
+// FILTER ORDERS
+// ================================
+
+let filteredOrders = data;
+
+
+if (currentOrderFilter !== "all") {
+
+  filteredOrders =
+    data.filter(order =>
+
+      order.payment_status
+        ?.toLowerCase() ===
+      currentOrderFilter
+
+    );
+
+}
+// ================================
+// SEARCH ORDERS
+// ================================
+
+if (currentOrderSearch) {
+
+  filteredOrders =
+    filteredOrders.filter(order => {
+
+      const orderId =
+        String(order.id);
+
+      const customerName =
+        String(
+          order.customer_name || ""
+        ).toLowerCase();
+
+      const customerPhone =
+        String(
+          order.customer_phone || ""
+        ).toLowerCase();
+
+
+      return (
+        orderId.includes(currentOrderSearch) ||
+        customerName.includes(currentOrderSearch) ||
+        customerPhone.includes(currentOrderSearch)
+      );
+
+    });
+
+}
+
+
+if (filteredOrders.length === 0) {
+
+  ordersList.innerHTML =
+    `<p>No ${currentOrderFilter} orders.</p>`;
+
+  return;
+}
+
+
+ordersList.innerHTML = "";
+
+
+filteredOrders.forEach(order => {
 
     const orderCard =
       document.createElement("div");
@@ -894,5 +968,57 @@ async function confirmPayment(orderId) {
   // Refresh orders and inventory
   await loadOrders();
   await loadInventory();
+
+}
+// ================================
+// ORDER FILTER BUTTONS
+// ================================
+
+orderFilterButtons.forEach(button => {
+
+  button.addEventListener("click", async () => {
+
+    // Remove active style
+    // from all filter buttons
+    orderFilterButtons.forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+
+    // Highlight clicked button
+    button.classList.add("active");
+
+
+    // Save selected filter
+    currentOrderFilter =
+      button.dataset.orderFilter;
+
+
+    // Display matching orders
+    await loadOrders();
+
+  });
+
+});
+// ================================
+// ORDER SEARCH
+// ================================
+
+if (orderSearchInput) {
+
+  orderSearchInput.addEventListener(
+    "input",
+    async () => {
+
+      currentOrderSearch =
+        orderSearchInput
+          .value
+          .trim()
+          .toLowerCase();
+
+      await loadOrders();
+
+    }
+  );
 
 }

@@ -367,34 +367,73 @@
 
 
     <!-- =========================
-         ORDERS
-    ========================== -->
+     ORDERS
+========================== -->
 
-    <section
-      class="admin-card orders-section"
-      id="orders-section"
-    >
+<section
+  class="admin-card orders-section"
+  id="orders-section"
+>
 
-      <div class="admin-card-header">
+  <div class="admin-card-header">
 
-        <div>
-          <p class="admin-small-text">
-            CUSTOMER ORDERS
-          </p>
+    <div>
+      <p class="admin-small-text">
+        CUSTOMER ORDERS
+      </p>
 
-          <h2>Orders</h2>
-        </div>
-
-      </div>
+      <h2>Orders</h2>
+    </div>
 
 
-      <div id="orders-list" class="orders-list">
+    <div class="order-filters">
 
-        <p>Loading orders...</p>
+      <button
+        class="order-filter-btn active"
+        data-order-filter="all"
+      >
+        All
+      </button>
 
-      </div>
+      <button
+        class="order-filter-btn"
+        data-order-filter="pending"
+      >
+        Pending
+      </button>
 
-    </section>
+      <button
+        class="order-filter-btn"
+        data-order-filter="paid"
+      >
+        Paid
+      </button>
+
+    </div>
+
+
+    <div class="order-search">
+
+      <input
+        type="text"
+        id="order-search-input"
+        placeholder="Search orders..."
+        autocomplete="off"
+      >
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="orders-list"
+    class="orders-list"
+  >
+    <p>Loading orders...</p>
+  </div>
+
+</section>
 
 
   </main>
