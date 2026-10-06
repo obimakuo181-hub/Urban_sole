@@ -1550,3 +1550,33 @@ Please send me the payment details.
 
   }
 );
+// ========================================
+// MOBILE NAVIGATION
+// ========================================
+
+const mobileMenuBtn =
+  document.getElementById("mobile-menu-btn");
+
+const mobileMenu =
+  document.getElementById("mobile-menu");
+
+if (mobileMenuBtn && mobileMenu) {
+
+  mobileMenuBtn.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("open");
+
+    const isOpen =
+      mobileMenu.classList.contains("open");
+
+    mobileMenuBtn.textContent =
+      isOpen ? "✕" : "☰";
+
+    mobileMenuBtn.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+
+  });
+
+}
