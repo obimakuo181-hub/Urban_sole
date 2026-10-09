@@ -43,14 +43,15 @@ async function loadProductsFromSupabase() {
     price:
       `₦${Number(product.price).toLocaleString()}`,
 
-    badge:
-      product.status?.toLowerCase() === "available"
-        ? "New"
-        : "",
+    badge: product.tag || "",
 
     badgeClass:
-      product.status?.toLowerCase() === "available"
+      product.tag === "New"
         ? "badge-dark"
+        : product.tag === "Sale"
+        ? "badge-red"
+        : product.tag === "Popular"
+        ? "badge-yellow"
         : "",
 
     image:

@@ -234,7 +234,10 @@ if (photoFile) {
       ),
 
     status:
-      document.getElementById("product-status").value
+      document.getElementById("product-status").value,
+
+    tag:
+      document.getElementById("product-tag").value
   };
   if (photoUrl) {
   productData.photos = [photoUrl];
@@ -428,6 +431,10 @@ document.getElementById(
         Status: ${product.status}
       </p>
 
+      <p>
+        Tag: ${product.tag || "No Tag"}
+      </p>
+
 
       <button
         onclick="editProduct(${product.id})"
@@ -530,6 +537,10 @@ async function editProduct(productId) {
   document.getElementById(
     "product-status"
   ).value = data.status || "available";
+
+  document.getElementById(
+  "product-tag"
+  ).value = data.tag || "";
 
 
   // Tell admin which product is being edited

@@ -1211,3 +1211,33 @@ body {
     color: #666;
   }
 }
+/* ===================================
+   RESPONSIVE PRODUCT FILTERS
+=================================== */
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .search-input-wrapper {
+    width: 100%;
+    min-width: 0;
+    flex: none;
+  }
+
+  .filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .filter-pills .pill-btn {
+    flex: 1 1 auto;
+    min-width: 65px;
+    text-align: center;
+  }
+}
