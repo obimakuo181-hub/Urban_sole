@@ -1550,33 +1550,33 @@ Please send me the payment details.
 
   }
 );
-// ========================================
-// MOBILE NAVIGATION
-// ========================================
 
-const mobileMenuBtn =
-  document.getElementById("mobile-menu-btn");
+// ===================================
+// MOBILE NAVIGATION MENU
+// ===================================
 
-const mobileMenu =
-  document.getElementById("mobile-menu");
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
 
 if (mobileMenuBtn && mobileMenu) {
-
   mobileMenuBtn.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("active");
 
-    mobileMenu.classList.toggle("open");
-
-    const isOpen =
-      mobileMenu.classList.contains("open");
-
-    mobileMenuBtn.textContent =
-      isOpen ? "✕" : "☰";
-
+    mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
+    mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
     mobileMenuBtn.setAttribute(
       "aria-label",
       isOpen ? "Close menu" : "Open menu"
     );
-
   });
 
+  // Close menu when a navigation link is clicked
+  document.querySelectorAll(".mobile-nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      mobileMenuBtn.textContent = "☰";
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      mobileMenuBtn.setAttribute("aria-label", "Open menu");
+    });
+  });
 }
