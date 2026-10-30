@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Resend Verification | Urban Sole</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+  <main class="auth-container">
+    <section class="auth-card">
+
+      <a href="login.html" class="back-link">
+        &larr; Back to Login
+      </a>
+
+      <div class="auth-header">
+        <h1>URBAN SOLE</h1>
+        <h2>Verify Your Email</h2>
+        <p>
+          Didn't receive your verification email?
+          Enter your account details to request a new link.
+        </p>
+      </div>
+
+      <form id="resend-form">
+
+        <div class="form-group">
+          <label for="resend-email">Email Address</label>
+          <input
+            type="email"
+            id="resend-email"
+            placeholder="Enter your registered email"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="resend-password">Password</label>
+          <input
+            type="password"
+            id="resend-password"
+            placeholder="Enter your account password"
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <p
+          id="resend-message"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <button type="submit" id="signup-btn">
+          Resend Verification Email
+        </button>
+
+      </form>
+
+      <p class="auth-footer">
+        Already verified your email?
+        <a href="login.html">Log In</a>
+      </p>
+
+    </section>
+  </main>
+
+  <script type="module" src="resend-verification.js"></script>
+
+</body>
+</html>

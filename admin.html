@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Sole Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <section id="login-section">
+    <h2>Admin Login</h2>
+
+    <form id="login-form">
+      <input
+        type="email"
+        id="admin-email"
+        placeholder="Email address"
+        required
+      >
+
+      <input
+        type="password"
+        id="admin-password"
+        placeholder="Password"
+        required
+      >
+
+      <button type="submit">Log In</button>
+    </form>
+
+    <p id="login-message"></p>
+  </section>
+
+<section id="admin-section" class="admin-dashboard" style="display: none;">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+
+    <div class="admin-brand">
+      <h2>Urban Sole</h2>
+      <span>ADMIN</span>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="#dashboard-overview" class="admin-nav-link active">
+        Dashboard
+      </a>
+
+      <a href="#product-form-section" class="admin-nav-link">
+        Add Product
+      </a>
+
+      <a href="#inventory-section" class="admin-nav-link">
+        Inventory
+      </a>
+
+      <a href="#orders-section" class="admin-nav-link">
+      Orders
+    </a>
+    </nav>
+
+    <button id="logout-btn" class="logout-btn">
+      Log Out
+
+    </button>
+
+  </aside>
+
+
+  <!-- Main Content -->
+  <main class="admin-main">
+
+    <!-- Header -->
+    <div class="admin-topbar">
+      <div>
+        <p class="admin-small-text">ADMIN PANEL</p>
+        <h1>Dashboard</h1>
+      </div>
+
+      <div class="admin-profile">
+        <div class="admin-avatar">
+          A
+        </div>
+
+        <div>
+          <strong>Administrator</strong>
+          <p>Urban Sole</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Dashboard Overview -->
+    <section
+      class="dashboard-overview"
+      id="dashboard-overview"
+    >
+
+      <div class="stat-card">
+        <p>Total Products</p>
+        <h2 id="total-products-stat">0</h2>
+        <span>Inventory items</span>
+      </div>
+
+      <div class="stat-card">
+        <p>Available</p>
+        <h2 id="available-products-stat">0</h2>
+        <span>Ready for sale</span>
+      </div>
+
+      <div class="stat-card">
+        <p>Sold</p>
+        <h2 id="sold-products-stat">0</h2>
+        <span>Sold products</span>
+      </div>
+
+      <div class="stat-card">
+        <p>Low Stock</p>
+        <h2 id="low-stock-stat">0</h2>
+        <span>Quantity 1 or less</span>
+      </div>
+
+    </section>
+
+    <!-- Order Statistics -->
+<section class="order-overview">
+
+  <div class="stat-card">
+    <p>Total Orders</p>
+    <h2 id="total-orders-stat">0</h2>
+    <span>All customer orders</span>
+  </div>
+
+  <div class="stat-card">
+    <p>Pending Payments</p>
+    <h2 id="pending-orders-stat">0</h2>
+    <span>Awaiting payment</span>
+  </div>
+
+  <div class="stat-card">
+    <p>Paid Orders</p>
+    <h2 id="paid-orders-stat">0</h2>
+    <span>Payment confirmed</span>
+  </div>
+
+  <div class="stat-card">
+    <p>Total Revenue</p>
+    <h2 id="revenue-stat">₦0</h2>
+    <span>From paid orders</span>
+  </div>
+
+</section>
+
+    <!-- Add / Edit Product -->
+    <section
+      class="admin-card product-form-section"
+      id="product-form-section"
+    >
+
+      <div class="admin-card-header">
+        <div>
+          <p class="admin-small-text">
+            INVENTORY MANAGEMENT
+          </p>
+
+          <h2>Add New Product</h2>
+        </div>
+      </div>
+
+
+      <form id="product-form" class="product-form">
+
+        <div class="form-group">
+          <label for="product-name">
+            Product Name
+          </label>
+
+          <input
+            type="text"
+            id="product-name"
+            placeholder="Nike Dunk Low"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="product-brand">
+            Brand
+          </label>
+
+          <input
+            type="text"
+            id="product-brand"
+            placeholder="Nike"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="product-category">
+            Category
+          </label>
+
+          <input
+            type="text"
+            id="product-category"
+            placeholder="Sneakers"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="product-size">
+            Size
+          </label>
+
+          <input
+            type="text"
+            id="product-size"
+            placeholder="42"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="product-condition">
+            Condition
+          </label>
+
+          <input
+            type="text"
+            id="product-condition"
+            placeholder="9/10"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="product-price">
+            Price (₦)
+          </label>
+
+          <input
+            type="number"
+            id="product-price"
+            placeholder="85000"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="product-quantity">
+            Quantity
+          </label>
+
+          <input
+            type="number"
+            id="product-quantity"
+            value="1"
+            min="0"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="product-status">
+            Status
+          </label>
+
+          <select id="product-status">
+            <option value="available">
+              Available
+            </option>
+
+            <option value="sold">
+              Sold
+            </option>
+
+            <option value="reserved">
+              Reserved
+            </option>
+          </select>
+        </div>
+        <!-- Product Tag -->
+        <div class="form-group">
+          <label for="product-tag">
+            Product Tag
+          </label>
+
+          <select id="product-tag">
+            <option value="">No Tag</option>
+            <option value="New">New</option>
+            <option value="Sale">Sale</option>
+            <option value="Popular">Popular</option>
+          </select>
+        </div>
+
+
+        <div class="form-group form-full">
+          <label for="product-description">
+            Description
+          </label>
+
+          <textarea
+            id="product-description"
+            placeholder="Describe the shoe..."
+          ></textarea>
+        </div>
+
+
+        <div class="form-group form-full">
+          <label for="product-photo">
+            Product Photo
+          </label>
+
+          <input
+            type="file"
+            id="product-photo"
+            accept="image/jpeg,image/png,image/webp"
+          >
+
+          <small>
+            JPG, PNG or WebP
+          </small>
+        </div>
+
+
+        <div class="form-full form-actions">
+
+          <button
+            type="submit"
+            class="primary-btn"
+          >
+            Add Product
+          </button>
+
+        </div>
+
+      </form>
+
+      <p id="product-message" class="product-message"></p>
+
+    </section>
+
+
+    <!-- Inventory -->
+    <section
+      class="admin-card inventory-section"
+      id="inventory-section"
+    >
+
+      <div class="admin-card-header">
+
+        <div>
+          <p class="admin-small-text">
+            PRODUCTS
+          </p>
+
+          <h2>Inventory</h2>
+        </div>
+
+      </div>
+
+
+      <div id="inventory-list" class="inventory-grid">
+
+        <p>Loading inventory...</p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+     ORDERS
+========================== -->
+
+<section
+  class="admin-card orders-section"
+  id="orders-section"
+>
+
+  <div class="admin-card-header">
+
+    <div>
+      <p class="admin-small-text">
+        CUSTOMER ORDERS
+      </p>
+
+      <h2>Orders</h2>
+    </div>
+
+
+    <div class="order-filters">
+
+      <button
+        class="order-filter-btn active"
+        data-order-filter="all"
+      >
+        All
+      </button>
+
+      <button
+        class="order-filter-btn"
+        data-order-filter="pending"
+      >
+        Pending
+      </button>
+
+      <button
+        class="order-filter-btn"
+        data-order-filter="paid"
+      >
+        Paid
+      </button>
+
+      <button
+        class="order-filter-btn"
+        data-order-filter="cancelled"
+      >
+        Cancelled
+      </button>
+
+    </div>
+
+
+    <div class="order-search">
+
+      <input
+        type="text"
+        id="order-search-input"
+        placeholder="Search orders..."
+        autocomplete="off"
+      >
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="orders-list"
+    class="orders-list"
+  >
+    <p>Loading orders...</p>
+  </div>
+
+</section>
+
+
+  </main>
+
+</section>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://jdqlviwvvpflsvrgpxel.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_v2tDT3hfrp8x26ES5Z6lhA_E_t1zZTM";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+  </script>
+
+  <script src="admin.js"></script>
+
+</body>
+</html>

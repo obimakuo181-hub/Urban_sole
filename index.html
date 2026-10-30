@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Sole</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      
+      <a href="#" class="nav-logo">
+        <img src="assets/5884026533653974931.jpg" alt="iThrift Logo" class="logo-img">
+        <span class="brand-name">Urban Sole</span>
+      </a>
+
+        <nav class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="#featured" class="nav-link">Shop</a>
+      <a href="#featured" class="nav-link">New Arrivals</a>
+     <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+   
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="search-toggle-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <a
+                href="login.html"
+                class="icon-btn"
+                id="customer-account-btn"
+                aria-label="Customer Account"
+                title="Customer Account"
+              >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+                <!-- Customer Payment Wallet -->
+        <button
+          class="icon-btn wallet-btn"
+          id="wallet-btn"
+          type="button"
+          aria-label="My Payments"
+          title="My Payments"
+          style="position: relative;"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="5" width="20" height="16" rx="2"></rect>
+            <path d="M2 9h20"></path>
+            <path d="M16 14h6v4h-6a2 2 0 0 1 0-4z"></path>
+          </svg>
+
+          <span class="cart-badge" id="wallet-badge" hidden>0</span>
+        </button>
+        <button class="icon-btn cart-btn" id="cart-btn" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+        <button
+            class="mobile-menu-btn"
+            id="mobile-menu-btn"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+      </div>
+
+    </div>
+     <div class="mobile-menu" id="mobile-menu">
+
+  <a href="#" class="mobile-nav-link">
+    Home
+  </a>
+
+  <a href="#featured" class="mobile-nav-link">
+    Shop
+  </a>
+
+  <a href="#featured" class="mobile-nav-link" data-mobile-filter="New">
+    New Arrivals
+  </a>
+
+
+<a href="contact.html" class="mobile-nav-link">
+  Contact
+</a>
+</div> 
+  </header>
+
+  <!-- Hero Banner Section -->
+  <section class="hero-banner">
+    <div class="hero-bg-wrapper">
+  <model-viewer
+    src="assets/models/sneaker.glb"
+    alt="3D gently used thrift sneaker"
+    auto-rotate
+    rotation-per-second="20deg"
+    camera-orbit="45deg 75deg auto"
+    camera-controls
+    shadow-intensity="1"
+    exposure="1.2"
+    interaction-prompt="none"
+    style="width: 100%; height: 100%;"
+  ></model-viewer>
+  </div>
+    <div class="hero-content-overlay">
+      <a href="#featured" class="shop-now-btn">Shop Now &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Featured Products & Controls Section -->
+  <section class="featured-section" id="featured">
+    <div class="container">
+      
+      <div class="section-header">
+      <h2 class="section-title">Featured Sneakers</h2>
+    </div>
+
+      <div class="filter-bar">
+        <div class="search-input-wrapper">
+          <input type="text" id="search-input" placeholder="Search sneakers by name..." />
+        </div>
+
+        <div class="filter-pills">
+          <button class="pill-btn active" data-filter="all">All</button>
+          <button class="pill-btn" data-filter="New">New</button>
+          <button class="pill-btn" data-filter="Sale">Sale</button>
+          <button class="pill-btn" data-filter="Popular">Popular</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+
+    </div>
+  </section>
+
+  <!-- Slide-Out Shopping Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Shopping Cart (<span id="cart-drawer-count">0</span>)</h3>
+      <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+    </div>
+
+    <div class="cart-items" id="cart-items">
+      <p class="empty-cart-msg">Your cart is currently empty.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal:</span>
+        <span id="cart-subtotal-price">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="open-checkout-btn">Proceed to Checkout</button>
+    </div>
+  </aside>
+  <!-- Customer Payment Status Panel -->
+<div class="cart-overlay" id="wallet-overlay"></div>
+
+<aside class="cart-drawer" id="wallet-drawer">
+  <div class="cart-header">
+    <h3>My Payments</h3>
+    <button
+      class="close-cart-btn"
+      id="close-wallet-btn"
+      type="button"
+      aria-label="Close payments"
+    >&times;</button>
+  </div>
+
+  <div class="cart-items" id="wallet-orders">
+    <p class="empty-cart-msg">
+      Your payment history will appear here.
+    </p>
+  </div>
+</aside>
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="product-modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" id="close-product-modal">&times;</button>
+      <div class="modal-product-layout">
+        <div class="modal-img-wrapper">
+          <img id="modal-product-img" src="" alt="">
+        </div>
+        <div class="modal-info">
+          <span class="badge" id="modal-product-badge"></span>
+          <h2 id="modal-product-title"></h2>
+          <p class="modal-price" id="modal-product-price"></p>
+          <p class="modal-desc">Engineered for comfort and high-street style. Features premium materials, responsive cushioning, and signature durability.</p>
+          <button class="shop-now-btn" id="modal-add-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+ <!-- WhatsApp Checkout Modal -->
+<div class="modal-overlay" id="checkout-modal-overlay">
+
+  <div class="modal-box checkout-box">
+
+    <button
+      class="modal-close"
+      id="close-checkout-modal"
+      type="button"
+    >
+      &times;
+    </button>
+
+    <h2>Complete Your Order</h2>
+
+    <p class="checkout-description">
+      Enter your details below and continue your order on WhatsApp.
+    </p>
+
+    <form id="checkout-form" class="checkout-form">
+
+      <!-- Customer Name -->
+      <div class="form-group">
+        <label for="customer-name">Full Name</label>
+
+        <input
+          type="text"
+          id="customer-name"
+          placeholder="John Doe"
+          required
+        >
+      </div>
+
+
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="customer-phone">
+          Phone Number
+        </label>
+
+        <input
+          type="tel"
+          id="customer-phone"
+          placeholder="08012345678"
+          required
+        >
+      </div>
+
+
+      <!-- Delivery Address -->
+      <div class="form-group">
+        <label for="customer-address">
+          Delivery Address
+        </label>
+
+        <textarea
+          id="customer-address"
+          placeholder="Enter your delivery address"
+          required
+        ></textarea>
+      </div>
+
+
+      <!-- Order Total -->
+      <div class="checkout-total">
+
+        <span>Total:</span>
+
+        <strong id="checkout-total-price">
+          ₦0
+        </strong>
+
+      </div>
+
+
+      <!-- WhatsApp Button -->
+      <button
+        type="submit"
+        class="checkout-btn whatsapp-checkout-btn"
+      >
+        Continue Order on WhatsApp
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+  <!-- Footer Section -->
+  <footer class="footer" id="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3>Urban Sole</h3>
+        <p>Premium footwear designed for performance, comfort, and street style.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#featured">Shop Catalog</a></li>
+          <li><a href="#featured">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+
+        <p>
+          <a href="contact.html">Contact Us</a>
+        </p>
+
+        <p>Email: obimakuo181@gmail.com</p>
+        <p>Phone: +234(701)5058-379</p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Urban Sole. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+    ↑
+  </button>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "https://jdqlviwvvpflsvrgpxel.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_v2tDT3hfrp8x26ES5Z6lhA_E_t1zZTM";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+</script>
+
+<!-- Your existing JavaScript -->
+<script type="module" src="script.js"></script>
+<script type="module" src="navbar-auth.js"></script>
+
+<script
+  type="module"
+  src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+</script>
+</body>
+</html>

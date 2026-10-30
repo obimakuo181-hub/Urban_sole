@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Account | Urban Sole</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+  <main class="auth-container">
+    <section class="auth-card" id="account-card" hidden>
+
+      <a href="index.html" class="back-link">
+        &larr; Back to Store
+      </a>
+
+      <div class="auth-header">
+        <h1>URBAN SOLE</h1>
+        <h2>My Account</h2>
+        <p>Manage your Urban Sole customer account.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <p id="account-email">Loading...</p>
+      </div>
+
+      <div class="form-group">
+        <label>Verification Status</label>
+        <p id="account-status">Checking...</p>
+      </div>
+
+      <button type="button" id="signup-btn">
+        Log Out
+      </button>
+
+    </section>
+
+    <p id="account-loading" role="status">
+      Checking your account...
+    </p>
+  </main>
+
+  <script type="module" src="account.js"></script>
+
+</body>
+</html>
