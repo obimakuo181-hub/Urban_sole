@@ -155,7 +155,7 @@ function validateCartStock() {
       cartChanged = true;
       return false;
     }
-f
+
     // Product is sold out
     if (
       product.stockQuantity <= 0 ||
@@ -1312,6 +1312,18 @@ document.addEventListener(
     // WHATSAPP CHECKOUT
     // ====================================
     let isCheckoutProcessing = false;
+    const CHECKOUT_KEY_STORAGE = "urbanSoleCheckoutKey";
+
+    function getCheckoutKey() {
+      let key = localStorage.getItem(CHECKOUT_KEY_STORAGE);
+
+      if (!key) {
+        key = crypto.randomUUID();
+        localStorage.setItem(CHECKOUT_KEY_STORAGE, key);
+      }
+
+      return key;
+    }
     document
     .getElementById("checkout-form")
     ?.addEventListener(
@@ -1445,6 +1457,7 @@ if (!user) {
 
 try {
   const token = await user.getIdToken(true);
+  const checkoutKey = getCheckoutKey();
 
   const response = await fetch(
     "https://jdqlviwvvpflsvrgpxel.supabase.co/functions/v1/customer-profile",
@@ -1456,6 +1469,7 @@ try {
       },
       body: JSON.stringify({
         action: "create_order",
+        idempotency_key: checkoutKey,
         items: orderItems.map(item => ({
           product_id: item.product_id,
           quantity: item.quantity
@@ -1486,10 +1500,6 @@ try {
 
   return;
 }
-
- 
-
-
 
 
 
@@ -1613,6 +1623,7 @@ Please send me the payment details.
           localStorage.removeItem("urbanSoleCart");
 
           updateCartUI();
+          localStorage.removeItem(CHECKOUT_KEY_STORAGE);
 
           isCheckoutProcessing = false;
 
@@ -1744,10 +1755,18 @@ function getReadWalletUpdates(userId) {
 }
 
 function getWalletUpdateId(order) {
-  const status = String(order.payment_status || "pending")
-    .toLowerCase();
+  const paymentStatus = String(
+    order.payment_status || "pending"
+  ).toLowerCase();
 
-  return `${order.id}:${status}`;
+  const orderStatus = String(
+    order.order_status || "pending"
+  ).toLowerCase();
+
+  const items = JSON.stringify(order.items || []);
+  const total = Number(order.total || 0);
+
+  return `${order.id}:${paymentStatus}:${orderStatus}:${items}:${total}`;
 }
 
 function getUnreadWalletUpdates(orders, userId) {
@@ -1832,28 +1851,112 @@ walletBtn?.addEventListener("click", async () => {
     }
 
     orders.forEach((order) => {
-      const item = document.createElement("div");
-      item.className = "wallet-order-item";
+  const item = document.createElement("div");
+  item.className = "wallet-order-item";
 
-      const title = document.createElement("h4");
-      title.textContent = `Order #${order.id}`;
+  const title = document.createElement("h4");
+  title.textContent = `Order #${order.id}`;
 
-      const amount = document.createElement("p");
-      amount.textContent = `Total: ₦${Number(order.total).toLocaleString("en-NG")}`;
+  const paymentStatus = String(
+    order.payment_status || "pending"
+  ).toLowerCase();
 
-      const status = document.createElement("p");
+  const orderStatus = String(
+    order.order_status || "pending"
+  ).toLowerCase();
 
-      const isPaid = String(order.payment_status).toLowerCase() === "paid";
+  const isCancelled =
+    orderStatus === "cancelled" ||
+    paymentStatus === "cancelled";
 
-      status.textContent = isPaid
-        ? "Payment Confirmed ✓"
-        : "Pending Payment";
+  // Show original shoes for cancelled orders.
+  // Otherwise, show the current order items.
+  const displayItems = isCancelled
+    ? (order.original_items || order.items || [])
+    : (order.items || []);
 
-      status.style.color = isPaid ? "#16a34a" : "#d97706";
+  const shoes = document.createElement("p");
 
-      item.append(title, amount, status);
-      walletOrders.appendChild(item);
-    });
+  shoes.textContent = displayItems.length
+    ? displayItems.map((shoe) =>
+        `${shoe.name} (Size ${shoe.size || "N/A"}) × ${shoe.quantity}`
+      ).join(", ")
+    : "No shoe details available";
+  // Notify customer when shoes are removed from an order
+const originalItems = Array.isArray(order.original_items)
+  ? order.original_items
+  : [];
+
+const currentItems = Array.isArray(order.items)
+  ? order.items
+  : [];
+
+const removedShoes = originalItems.filter(originalShoe => {
+  return !currentItems.some(currentShoe =>
+    String(currentShoe.product_id) ===
+    String(originalShoe.product_id)
+  );
+});
+
+if (removedShoes.length > 0) {
+  const notification = document.createElement("p");
+
+  const shoeNames = removedShoes
+    .map(shoe => shoe.name)
+    .join(", ");
+
+  notification.textContent = isCancelled
+    ? `${shoeNames} was purchased by another customer. Your order has been cancelled.`
+    : `${shoeNames} was purchased by another customer and removed from your order. Your remaining order total has been updated.`;
+
+  notification.style.color = "#dc2626";
+  notification.style.fontWeight = "500";
+  notification.style.marginTop = "8px";
+
+  item.appendChild(notification);
+}
+  const amount = document.createElement("p");
+
+  amount.textContent = `Total: ₦${Number(
+    order.total || 0
+  ).toLocaleString("en-NG")}`;
+
+  const status = document.createElement("p");
+
+  if (isCancelled) {
+    status.textContent = "Order Cancelled ✕";
+    status.style.color = "#dc2626";
+  } else if (paymentStatus === "paid") {
+    status.textContent = "Payment Confirmed ✓";
+    status.style.color = "#16a34a";
+  } else {
+    status.textContent = "Pending Payment";
+    status.style.color = "#d97706";
+  }
+
+ // Order header
+  const orderHeader = document.createElement("div");
+  orderHeader.className = "wallet-order-header";
+  orderHeader.append(title, status);
+
+  // Shoe details
+ const shoeDetails = document.createElement("div");
+  shoeDetails.className = "wallet-shoe-details";
+
+  const shoeIcon = document.createElement("div");
+  shoeIcon.className = "wallet-shoe-icon";
+  shoeIcon.textContent = "👟";
+
+  const shoeInfo = document.createElement("div");
+  shoeInfo.className = "wallet-shoe-info";
+  shoeInfo.append(shoes, amount);
+
+  shoeDetails.append(shoeIcon, shoeInfo);
+
+  // Put the order information into the card
+  item.prepend(orderHeader, shoeDetails);
+  walletOrders.appendChild(item);
+});
 
     // Mark displayed order updates as read
 markWalletUpdatesAsRead(orders, user.uid);
