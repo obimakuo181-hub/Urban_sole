@@ -1647,3 +1647,101 @@ body {
     transform: none;
   }
 }
+
+/* MOBILE 3D SNEAKER HERO FIX */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 350px;
+    position: relative;
+  }
+
+  .hero-bg-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-bg-wrapper model-viewer {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  .hero-content-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 12px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .hero-brand-name {
+    font-size: clamp(22px, 6vw, 32px);
+    letter-spacing: 1px;
+
+
+    margin: 0;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .shop-now-btn {
+    font-size: 13px;
+    padding: 11px 22px;
+  }
+}
+
+/* MOBILE SHOPPING CART */
+@media (max-width: 600px) {
+  .cart-drawer {
+    width: calc(100% - 32px);
+    max-width: 360px;
+    height: 75dvh;
+    max-height: 650px;
+    top: 50%;
+    right: 16px;
+    border-radius: 16px;
+    transform: translateY(-50%) translateX(calc(100% + 32px));
+    overflow: hidden;
+  }
+
+  .cart-drawer.open {
+    right: 16px;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .cart-items {
+    min-height: 0;
+    overflow-y: auto;
+  }
+}
+
+/* MOBILE MY PAYMENTS PANEL */
+@media (max-width: 600px) {
+  #wallet-drawer {
+    width: calc(100% - 32px);
+    max-width: 360px;
+    height: 75dvh;
+    max-height: 650px;
+    top: 50%;
+    right: 16px;
+    border-radius: 16px;
+    transform: translateY(-50%) translateX(calc(100% + 32px));
+    overflow: hidden;
+  }
+
+  #wallet-drawer.open {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  #wallet-orders {
+    min-height: 0;
+    overflow-y: auto;
+  }
+}

@@ -10,6 +10,60 @@ const adminSection = document.getElementById("admin-section");
 const logoutBtn = document.getElementById("logout-btn");
 
 const productForm = document.getElementById("product-form");
+// ================================
+// PRODUCT FORM DRAFT
+// ================================
+
+const PRODUCT_DRAFT_KEY = "urbanSoleProductDraft";
+
+productForm.addEventListener("input", () => {
+  // Don't save drafts while editing an existing product
+  if (editingProductId !== null) return;
+
+  const draft = {};
+
+  productForm
+    .querySelectorAll("input, select, textarea")
+    .forEach((field) => {
+      if (!field.id || field.type === "file") return;
+
+      draft[field.id] = field.value;
+    });
+
+  localStorage.setItem(
+    PRODUCT_DRAFT_KEY,
+    JSON.stringify(draft)
+  );
+});
+// ================================
+// RESTORE PRODUCT FORM DRAFT
+// ================================
+
+function restoreProductDraft() {
+  const savedDraft = localStorage.getItem(PRODUCT_DRAFT_KEY);
+
+  if (!savedDraft) return;
+
+  try {
+    const draft = JSON.parse(savedDraft);
+
+    productForm
+      .querySelectorAll("input, select, textarea")
+      .forEach((field) => {
+        if (!field.id || field.type === "file") return;
+
+        if (Object.prototype.hasOwnProperty.call(draft, field.id)) {
+          field.value = draft[field.id];
+        }
+      });
+
+  } catch (error) {
+    console.error("Could not restore product draft:", error);
+  }
+}
+
+// Restore draft when the page loads
+restoreProductDraft();
 const productMessage = document.getElementById("product-message");
 const inventoryList = document.getElementById("inventory-list");
 const ordersList = document.getElementById("orders-list");
@@ -292,6 +346,10 @@ if (photoFile) {
 
   // Reset form
   productForm.reset();
+  // Clear saved draft after successfully adding a product
+if (!isEditing) {
+  localStorage.removeItem(PRODUCT_DRAFT_KEY);
+}
 
   document.getElementById(
     "product-quantity"
@@ -393,11 +451,15 @@ const soldProducts = paidOrderError
 if (paidOrderError) {
   console.error("Error calculating sold pairs:", paidOrderError);
 }
-const lowStockProducts = data.filter(
-  product =>
-    Number(product.quantity) === 1 &&
+const lowStockProducts = data.filter(product => {
+  const quantity = Number(product.quantity) || 0;
+
+  return (
+    quantity >= 1 &&
+    quantity <= 15 &&
     product.status?.toLowerCase() === "available"
-).length;
+  );
+}).length;
 
 
 document.getElementById(
@@ -434,6 +496,27 @@ document.getElementById(
     const productCard =
       document.createElement("div");
 
+          // Determine stock level
+    const quantity = Number(product.quantity) || 0;
+    const isSold = product.status?.toLowerCase() === "sold";
+
+    let stockLabel = "";
+    let stockClass = "";
+
+    if (quantity <= 0 || isSold) {
+      stockLabel = "Sold Out";
+      stockClass = "stock-sold";
+    } else if (quantity <= 15) {
+      stockLabel = "Low Stock";
+      stockClass = "stock-low";
+    } else if (quantity <= 69) {
+      stockLabel = "Medium Stock";
+      stockClass = "stock-medium";
+    } else {
+      stockLabel = "High Stock";
+      stockClass = "stock-high";
+    }
+
 
     productCard.innerHTML = `
 
@@ -462,6 +545,13 @@ document.getElementById(
 
       <p>
         Quantity: ${product.quantity}
+      </p>
+
+      <p>
+        Stock Level:
+        <span class="stock-badge ${stockClass}">
+          ${stockLabel}
+        </span>
       </p>
 
       <p>
@@ -595,11 +685,30 @@ async function editProduct(productId) {
 
   // Scroll to form
 
-  productForm.scrollIntoView({
-    behavior: "smooth"
-  });
-}
+ // Scroll to form
+// Open the Add Product page
+adminPages.forEach(page => {
+  page.classList.remove("active-page");
+});
 
+document.getElementById("product-form-section")
+  .classList.add("active-page");
+
+adminNavLinks.forEach(link => {
+  link.classList.toggle(
+    "active",
+    link.getAttribute("href") === "#product-form-section"
+  );
+});
+
+adminPageTitle.textContent = "Edit Product";
+
+window.scrollTo({
+  top: 0,
+  behavior: "smooth"
+});
+
+} 
 
 // ================================
 // DELETE PRODUCT
@@ -1143,3 +1252,53 @@ async function cancelOrder(orderId) {
   await loadOrders();
 
 }
+// ================================
+// ADMIN SIDEBAR PAGE NAVIGATION
+// ================================
+
+const adminNavLinks = document.querySelectorAll(".admin-nav-link");
+const adminPages = document.querySelectorAll(".admin-page");
+const adminPageTitle = document.querySelector(".admin-topbar h1");
+
+adminNavLinks.forEach(link => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const targetId = link.getAttribute("href").substring(1);
+
+    // Hide all admin pages
+    adminPages.forEach(page => {
+      page.classList.remove("active-page");
+    });
+
+    // Remove active state from sidebar links
+    adminNavLinks.forEach(navLink => {
+      navLink.classList.remove("active");
+    });
+
+    // Show selected page
+    const targetPage = document.getElementById(targetId);
+
+    if (targetPage) {
+      targetPage.classList.add("active-page");
+    }
+
+    // Dashboard includes both product and order statistics
+    if (targetId === "dashboard-overview") {
+      document.querySelector(".order-overview")
+        .classList.add("active-page");
+    }
+
+    // Highlight selected sidebar link
+    link.classList.add("active");
+
+    // Update page heading
+    adminPageTitle.textContent = link.textContent.trim();
+
+    // Scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+});

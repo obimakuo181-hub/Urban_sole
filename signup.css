@@ -181,3 +181,59 @@ body {
   color: #111;
   text-decoration: underline;
 }
+
+
+/* WALKING BOY ANIMATION */
+.walking-boy-scene {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.walking-boy {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  height: 270px;
+  object-fit: contain;
+  animation: walk-across 14s linear infinite;
+}
+
+@keyframes walk-across {
+  from {
+    transform: translateX(-280px);
+  }
+
+  to {
+    transform: translateX(100vw);
+  }
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 600px) {
+  .walking-boy-scene {
+    bottom: 12px;
+    height: 190px;
+  }
+
+  .walking-boy {
+    width: 170px;
+    height: 185px;
+    animation-duration: 10s;
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  .walking-boy-scene {
+    display: none;
+  }
+}
+
+

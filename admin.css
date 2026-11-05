@@ -852,3 +852,95 @@ select {
     font-size: 25px;
   }
 }
+/* Inventory stock-level badges */
+
+
+.inventory-grid .stock-badge {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.inventory-grid .stock-badge.stock-sold {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.inventory-grid .stock-badge.stock-low {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+.inventory-grid .stock-badge.stock-medium {
+  color: #d97706;
+  background: #fef3c7;
+}
+
+.inventory-grid .stock-badge.stock-high {
+  color: #16a34a;
+  background: #dcfce7;
+}
+/* Dashboard Low Stock indicator */
+.stat-card:has(#low-stock-stat) p,
+.stat-card:has(#low-stock-stat) h2 {
+  color: #dc2626;
+}
+/* ================================
+   ADMIN PAGE NAVIGATION
+================================ */
+
+.admin-page {
+  display: none;
+}
+
+.admin-page.active-page {
+  display: block;
+}
+
+/* Dashboard statistics layout */
+.dashboard-overview.active-page {
+  display: grid;
+}
+
+/* COMPACT MOBILE ADMIN NAVIGATION */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    padding: 16px;
+    height: auto;
+  }
+
+  .admin-brand {
+    padding: 0 0 12px;
+  }
+
+  .admin-brand h2 {
+    font-size: 20px;
+  }
+
+  .admin-nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin-top: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .admin-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .admin-nav-link {
+    flex-shrink: 0;
+    padding: 10px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .logout-btn {
+    margin-top: 12px;
+    padding: 10px;
+  }
+}

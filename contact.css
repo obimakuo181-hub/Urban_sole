@@ -911,3 +911,56 @@ body {
   }
 
 }
+/* =====================================
+   URBAN SOLE — CONTACT BRAND DESCRIPTION
+===================================== */
+
+.contact-brand-description {
+  max-width: 520px;
+  margin: 20px 0 42px;
+  padding: 22px 24px;
+  background: #ffffff;
+  border-left: 4px solid #f5b800;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.045);
+}
+
+.contact-brand-description h2 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #151515;
+  margin: 0 0 14px;
+}
+
+.contact-brand-description p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #555555;
+  margin: 0 0 16px;
+}
+
+.contact-brand-description .contact-brand-tagline {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #111111;
+  background: #fff4cc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-brand-description {
+    max-width: 100%;
+    padding: 18px;
+    margin-bottom: 30px;
+  }
+
+  .contact-brand-description h2 {
+    font-size: 19px;
+  }
+}
