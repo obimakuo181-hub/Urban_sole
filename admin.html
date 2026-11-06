@@ -154,6 +154,31 @@
 </section>
 
     <!-- Add / Edit Product -->
+     <!-- DASHBOARD ANALYTICS -->
+<section
+  class="dashboard-charts admin-page active-page"
+  id="dashboard-charts"
+>
+  <div class="chart-card">
+    <div class="chart-header">
+      <h2>Sales Overview</h2>
+      <p>Revenue from confirmed payments</p>
+    </div>
+    <div class="chart-container">
+      <canvas id="sales-chart"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-header">
+      <h2>Order Status</h2>
+      <p>Customer order distribution</p>
+    </div>
+    <div class="chart-container">
+      <canvas id="orders-chart"></canvas>
+    </div>
+  </div>
+</section>
     <section
      class="admin-card product-form-section admin-page"
       id="product-form-section"
@@ -476,8 +501,8 @@
       SUPABASE_KEY
     );
   </script>
-
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="admin.js"></script>
-
+ 
 </body>
 </html>

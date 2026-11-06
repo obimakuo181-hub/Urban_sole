@@ -111,42 +111,47 @@
 </div> 
   </header>
 
-  <!-- Hero Banner Section -->
-  <section class="hero-banner">
-    <div class="hero-bg-wrapper">
-  <model-viewer
-    src="assets/models/sneaker.glb"
-    alt="3D gently used thrift sneaker"
-    auto-rotate
-    rotation-per-second="20deg"
-    camera-orbit="45deg 75deg auto"
-    camera-controls
-    disable-zoom
-    shadow-intensity="1"
-    exposure="1.2"
-    interaction-prompt="none"
-    style="width: 100%; height: 100%;"
-  ></model-viewer>
-  </div>
-    <div class="hero-content-overlay">
-  <h1 class="hero-brand-name" aria-label="Urban Sole">
-  <span style="--i:0">U</span>
-  <span style="--i:1">R</span>
-  <span style="--i:2">B</span>
-  <span style="--i:3">A</span>
-  <span style="--i:4">N</span>
-  <span class="brand-space" aria-hidden="true"></span>
-  <span style="--i:5">S</span>
-  <span style="--i:6">O</span>
-  <span style="--i:7">L</span>
-  <span style="--i:8">E</span>
-  </h1>
+  
+<!-- Hero Banner Section -->
+<section class="hero-banner">
 
-  <a href="#featured" class="shop-now-btn">
-    Shop Now &rarr;
-  </a>
+  <div class="hero-bg-wrapper">
+    <model-viewer
+      src="assets/models/sneaker.glb"
+      alt="3D Urban Sole sneaker"
+      auto-rotate
+      rotation-per-second="20deg"
+      camera-orbit="45deg 75deg auto"
+      camera-controls
+      disable-zoom
+      shadow-intensity="1"
+      exposure="1.2"
+      interaction-prompt="none"
+      style="width: 100%; height: 100%;"
+    ></model-viewer>
   </div>
-  </section>
+
+  <div class="hero-content-overlay">
+    <h1 class="hero-brand-name" aria-label="Urban Sole">
+      <span style="--i:0">U</span>
+      <span style="--i:1">R</span>
+      <span style="--i:2">B</span>
+      <span style="--i:3">A</span>
+      <span style="--i:4">N</span>
+      <span class="brand-space" aria-hidden="true"></span>
+      <span style="--i:5">S</span>
+      <span style="--i:6">O</span>
+      <span style="--i:7">L</span>
+      <span style="--i:8">E</span>
+    </h1>
+
+    <a href="#featured" class="shop-now-btn">
+      Shop Now &rarr;
+    </a>
+  </div>
+
+</section>
+
 
   <!-- Featured Products & Controls Section -->
   <section class="featured-section" id="featured">
@@ -380,5 +385,38 @@
   type="module"
   src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
 </script>
+
+<script>
+  async function captureHeroShoe() {
+    const model = document.getElementById("hero-main-model");
+
+    if (!model) {
+      alert("3D shoe model not found.");
+      return;
+    }
+
+    await model.updateComplete;
+
+    // Stop rotation for a clean capture
+    model.autoRotate = false;
+
+    // Set the viewing angle
+    model.cameraOrbit = "225deg 75deg auto";
+
+    // Give the model time to render
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Export with transparent background
+    const image = model.toDataURL("image/png", {
+      idealAspect: false
+    });
+
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "urban-sole-foreground.png";
+    link.click();
+  }
+</script>
+
 </body>
 </html>

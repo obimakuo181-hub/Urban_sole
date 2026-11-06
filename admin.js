@@ -410,6 +410,7 @@ const totalProducts = data.reduce(
   (total, product) => total + Math.max(0, Number(product.quantity) || 0),
   0
 );
+
 console.log(
   "INVENTORY CHECK:",
   data.map(product => ({
@@ -808,7 +809,7 @@ const totalRevenue =
         total + Number(order.total || 0),
       0
     );
-
+    updateDashboardCharts(data);
 
 if (totalOrdersStat) {
   totalOrdersStat.textContent =
@@ -1284,10 +1285,10 @@ adminNavLinks.forEach(link => {
     }
 
     // Dashboard includes both product and order statistics
-    if (targetId === "dashboard-overview") {
-      document.querySelector(".order-overview")
-        .classList.add("active-page");
-    }
+  if (targetId === "dashboard-overview") {
+  document.querySelector(".order-overview").classList.add("active-page");
+  document.querySelector(".dashboard-charts").classList.add("active-page");
+  }
 
     // Highlight selected sidebar link
     link.classList.add("active");
@@ -1302,3 +1303,189 @@ adminNavLinks.forEach(link => {
     });
   });
 });
+
+/* =====================================
+   URBAN SOLE DASHBOARD ANALYTICS
+===================================== */
+
+let salesChartInstance = null;
+let ordersChartInstance = null;
+
+function updateDashboardCharts(orders) {
+  console.log("CHART ORDERS:", orders);
+  console.log("FIRST ORDER:", orders[0]);
+  if (typeof Chart === "undefined") {
+    console.error("Chart.js has not loaded.");
+    return;
+  }
+
+  const salesCanvas = document.getElementById("sales-chart");
+  const ordersCanvas = document.getElementById("orders-chart");
+
+  if (!salesCanvas || !ordersCanvas) return;
+
+  // Group confirmed revenue by month
+  const monthlySales = new Map();
+
+  // Show the last 6 calendar months
+  const now = new Date();
+
+  for (let i = 5; i >= 0; i--) {
+    const date = new Date(
+      now.getFullYear(),
+      now.getMonth() - i,
+      1
+    );
+
+    const key = `${date.getFullYear()}-${String(
+      date.getMonth() + 1
+    ).padStart(2, "0")}`;
+
+    monthlySales.set(key, {
+      label: date.toLocaleDateString("en-NG", {
+        month: "short",
+        year: "2-digit"
+      }),
+      revenue: 0
+    });
+  }
+
+  orders.forEach(order => {
+    const status = String(
+      order.payment_status || ""
+    ).toLowerCase();
+
+    if (status !== "paid") return;
+
+    const amount = Number(order.total || 0);
+    const date = new Date(order.created_at);
+
+    if (!Number.isFinite(amount) ||
+        Number.isNaN(date.getTime())) {
+      return;
+    }
+
+    const key = `${date.getFullYear()}-${String(
+      date.getMonth() + 1
+    ).padStart(2, "0")}`;
+
+    if (monthlySales.has(key)) {
+      monthlySales.get(key).revenue += amount;
+    }
+  });
+
+  const months = Array.from(monthlySales.values());
+
+  // Sales bar chart
+  if (salesChartInstance) {
+    salesChartInstance.destroy();
+  }
+
+  salesChartInstance = new Chart(salesCanvas, {
+    type: "bar",
+    data: {
+      labels: months.map(month => month.label),
+      datasets: [{
+        label: "Confirmed Revenue (₦)",
+        data: months.map(month => month.revenue),
+        backgroundColor: "#ffbd00",
+        hoverBackgroundColor: "#e5a900",
+        borderRadius: 8,
+        maxBarThickness: 48
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        duration: 1000,
+        easing: "easeOutQuart"
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: context =>
+              "₦" + Number(context.raw).toLocaleString("en-NG")
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: value =>
+              "₦" + Number(value).toLocaleString("en-NG")
+          }
+        }
+      }
+    }
+  });
+
+  // Order status counts
+  const counts = {
+    paid: 0,
+    pending: 0,
+    cancelled: 0
+  };
+
+  orders.forEach(order => {
+    const status = String(
+      order.payment_status || ""
+    ).toLowerCase();
+
+    if (status in counts) {
+      counts[status]++;
+    }
+  });
+
+  // Doughnut chart
+  if (ordersChartInstance) {
+    ordersChartInstance.destroy();
+  }
+
+  ordersChartInstance = new Chart(ordersCanvas, {
+    type: "doughnut",
+    data: {
+      labels: ["Paid", "Pending", "Cancelled"],
+      datasets: [{
+        data: [
+          counts.paid,
+          counts.pending,
+          counts.cancelled
+        ],
+        backgroundColor: [
+          "#ffbd00",
+          "#202124",
+          "#d9dce1"
+        ],
+        borderWidth: 3,
+        borderColor: "#ffffff",
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: "72%",
+      animation: {
+        animateRotate: true,
+        duration: 1100
+      },
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: {
+            usePointStyle: true,
+            padding: 18
+          }
+        }
+      }
+    }
+  });
+}
