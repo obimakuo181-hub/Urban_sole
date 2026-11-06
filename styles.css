@@ -225,7 +225,7 @@ body {
 
 .hero-brand-name {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(32px, 5vw, 64px);
+  font-size: clamp(42px, 4.8vw, 72px);
   font-weight: 900;
   letter-spacing: 6px;
   color: #ffffff;
@@ -1743,5 +1743,117 @@ body {
   #wallet-orders {
     min-height: 0;
     overflow-y: auto;
+  }
+}
+
+/* URBAN SOLE — DARK STUDIO HERO */
+.hero-banner {
+  position: relative;
+  background:
+    radial-gradient(
+      ellipse at 50% 60%,
+      #252a2e 0%,
+      #101316 40%,
+      #030405 80%,
+      #000000 100%
+    );
+  overflow: hidden;
+}
+
+/* Cinematic overhead spotlight */
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  top: -15%;
+  left: calc(24% - 65px);
+  width: 50%;
+  height: 110%;
+
+  background: linear-gradient(
+    180deg,
+    rgba(220, 235, 255, 0.26) 0%,
+    rgba(180, 210, 245, 0.10) 40%,
+    transparent 85%
+  );
+
+  clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
+  filter: blur(22px);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Realistic floating sneaker shadow */
+.hero-bg-wrapper::after {
+  content: "";
+  position: absolute;
+
+  width: 330px;
+  height: 45px;
+
+  left: calc(37% - 65px);
+  bottom: 13%;
+
+ background: radial-gradient(
+  ellipse,
+  rgba(0, 0, 0, 0.95) 0%,
+  rgba(0, 0, 0, 0.6) 30%,
+  rgba(125, 135, 145, 0.18) 65%,
+  transparent 100%
+);
+
+  border-radius: 50%;
+  filter: blur(12px);
+  transform: rotate(-5deg);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* URBAN SOLE — PREMIUM HERO TYPOGRAPHY */
+.hero-content-overlay {
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 3%;
+  padding-bottom: 0;
+  gap: 24px;
+}
+
+.hero-brand-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 3.6vw, 54px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 1.05;
+  white-space: nowrap;
+
+  color: #f4f4f2;
+  text-shadow:
+    0 2px 8px rgba(255, 255, 255, 0.08),
+    0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content-overlay .shop-now-btn {
+  background: #d9ae54;
+  color: #101010;
+  padding: 15px 32px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.hero-content-overlay .shop-now-btn:hover {
+  background: #f2cc7c;
+  transform: translateY(-3px);
+}
+
+/* Move rotating sneaker slightly left */
+@media (min-width: 769px) {
+  .hero-bg-wrapper model-viewer {
+    position: relative;
+    left: -65px;
   }
 }
