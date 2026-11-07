@@ -699,3 +699,115 @@ body:has(#signup-form) .auth-footer a {
   }
 
 }
+
+/* =========================================
+   URBAN SOLE — PREMIUM MY ACCOUNT PAGE
+========================================= */
+
+/* Account page background */
+body:has(#account-card) {
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      125deg,
+      transparent 0%,
+      transparent 76%,
+      #ffbf00 76%,
+      #ffbf00 84%,
+      transparent 84%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      #f9f5f1 0px,
+      #f9f5f1 135px,
+      #f1ebe6 135px,
+      #f1ebe6 270px
+    );
+  background-attachment: fixed;
+}
+
+/* Premium account card */
+#account-card {
+  max-width: 500px;
+  padding: 42px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(255, 191, 0, 0.2);
+  box-shadow: 0 25px 70px rgba(45, 32, 22, 0.13);
+}
+
+/* Urban Sole branding */
+#account-card .auth-header h1 {
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 4px solid #ffbf00;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+/* Account heading */
+#account-card .auth-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111;
+}
+
+/* Account information */
+#account-card .form-group {
+  padding: 16px 18px;
+  background: #faf7f2;
+  border: 1px solid #eee4d9;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+#account-card .form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #777;
+}
+
+#account-card .form-group p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #171717;
+  overflow-wrap: anywhere;
+}
+
+/* Logout button */
+#account-card #signup-btn {
+  margin-top: 20px;
+  padding: 17px;
+  border-radius: 12px;
+  background: #111;
+  color: white;
+  font-weight: 800;
+}
+
+#account-card #signup-btn:hover {
+  background: #ffbf00;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  body:has(#account-card) {
+    background: repeating-linear-gradient(
+      135deg,
+      #f9f5f1 0px,
+      #f9f5f1 90px,
+      #f1ebe6 90px,
+      #f1ebe6 180px
+    );
+  }
+
+  #account-card {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+
+  #account-card .auth-header h2 {
+    font-size: 24px;
+  }
+}

@@ -7,109 +7,86 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Urban Sole Navigation -->
+<header class="navbar">
+  <div class="nav-container">
 
-  <!-- Navigation Bar -->
-  <header class="navbar">
-    <div class="nav-container">
-      
-      <a href="#" class="nav-logo">
-        <img src="assets/5884026533653974931.jpg" alt="iThrift Logo" class="logo-img">
-        <span class="brand-name">Urban Sole</span>
+    <a href="index.html" class="nav-logo">
+      <img
+        src="assets/5884026533653974931.jpg"
+        alt="iThrift Logo"
+        class="logo-img"
+      >
+      <span class="brand-name">Urban Sole</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="index.html#featured" class="nav-link">Shop</a>
+      <a href="index.html#featured" class="nav-link">New Arrivals</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+
+      <button class="icon-btn" id="search-toggle-btn"
+        type="button" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+
+      <a href="login.html" class="icon-btn"
+        id="customer-account-btn" aria-label="Customer Account">
+        <svg width="20" height="20" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
       </a>
 
-        <nav class="nav-links">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="#featured" class="nav-link">Shop</a>
-      <a href="#featured" class="nav-link">New Arrivals</a>
-     <a href="contact.html" class="nav-link">Contact</a>
-    </nav>
-   
+      <button class="icon-btn wallet-btn" id="wallet-btn"
+        type="button" aria-label="My Payments">
+        <svg width="20" height="20" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="5" width="20" height="16" rx="2"/>
+          <path d="M2 9h20"/>
+          <path d="M16 14h6v4h-6a2 2 0 0 1 0-4z"/>
+        </svg>
+        <span class="cart-badge" id="wallet-badge" hidden>0</span>
+      </button>
 
-      <div class="nav-actions">
-        <button class="icon-btn" id="search-toggle-btn" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
+      <button class="icon-btn cart-btn" id="cart-btn"
+        type="button" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
 
-        <a
-                href="login.html"
-                class="icon-btn"
-                id="customer-account-btn"
-                aria-label="Customer Account"
-                title="Customer Account"
-              >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-        </a>
-                <!-- Customer Payment Wallet -->
-        <button
-          class="icon-btn wallet-btn"
-          id="wallet-btn"
-          type="button"
-          aria-label="My Payments"
-          title="My Payments"
-          style="position: relative;"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2" y="5" width="20" height="16" rx="2"></rect>
-            <path d="M2 9h20"></path>
-            <path d="M16 14h6v4h-6a2 2 0 0 1 0-4z"></path>
-          </svg>
-
-          <span class="cart-badge" id="wallet-badge" hidden>0</span>
-        </button>
-        <button class="icon-btn cart-btn" id="cart-btn" aria-label="Cart">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <path d="M16 10a4 4 0 0 1-8 0"></path>
-          </svg>
-          <span class="cart-badge" id="cart-badge">0</span>
-        </button>
-        <button
-            class="mobile-menu-btn"
-            id="mobile-menu-btn"
-            aria-label="Open menu"
-          >
-            ☰
-          </button>
-      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn"
+        type="button" aria-label="Open menu"
+        aria-expanded="false">
+        ☰
+      </button>
 
     </div>
-     <div class="mobile-menu" id="mobile-menu">
+  </div>
 
-  <a href="#" class="mobile-nav-link">
-    Home
-  </a>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="index.html#featured" class="mobile-nav-link">Shop</a>
+    <a href="index.html#featured"
+       class="mobile-nav-link">New Arrivals</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+  </div>
+</header>
 
-  <a href="#featured" class="mobile-nav-link">
-    Shop
-  </a>
-
-  <a href="#featured" class="mobile-nav-link" data-mobile-filter="New">
-    New Arrivals
-  </a>
-
-
-<a href="contact.html" class="mobile-nav-link">
-  Contact
-</a>
-</div> 
-  </header>
 
   
 <!-- Hero Banner Section -->
@@ -122,7 +99,6 @@
       auto-rotate
       rotation-per-second="20deg"
       camera-orbit="45deg 75deg auto"
-      camera-controls
       disable-zoom
       shadow-intensity="1"
       exposure="1.2"
@@ -131,53 +107,92 @@
     ></model-viewer>
   </div>
 
-  <div class="hero-content-overlay">
-    <h1 class="hero-brand-name" aria-label="Urban Sole">
-      <span style="--i:0">U</span>
-      <span style="--i:1">R</span>
-      <span style="--i:2">B</span>
-      <span style="--i:3">A</span>
-      <span style="--i:4">N</span>
-      <span class="brand-space" aria-hidden="true"></span>
-      <span style="--i:5">S</span>
-      <span style="--i:6">O</span>
-      <span style="--i:7">L</span>
-      <span style="--i:8">E</span>
-    </h1>
+ 
+<div class="hero-content-overlay">
 
-    <a href="#featured" class="shop-now-btn">
-      Shop Now &rarr;
-    </a>
-  </div>
+  <!-- Golden Crown -->
+  <span class="hero-crown" aria-hidden="true">♛</span>
+
+  <!-- Animated Urban Sole Heading -->
+  <h1 class="hero-brand-name">
+    <span class="hero-word">
+      <span>U</span><span>R</span><span>B</span><span>A</span><span>N</span>
+    </span>
+
+    <span class="hero-word">
+      <span>S</span><span>O</span><span>L</span><span>E</span>
+    </span>
+  </h1>
+
+  <!-- Golden Underline -->
+  <div class="hero-gold-line"></div>
+
+  <!-- Tagline -->
+  <h2 class="hero-tagline">THRIFT FOOTWEAR</h2>
+
+  <p class="hero-description">
+    PREMIUM <span>•</span> AFFORDABLE <span>•</span> STYLISH
+  </p>
+
+  <!-- Shop Button -->
+  <a href="#featured" class="shop-now-btn">
+    SHOP NOW →
+  </a>
+
+</div>
+
 
 </section>
 
 
-  <!-- Featured Products & Controls Section -->
-  <section class="featured-section" id="featured">
-    <div class="container">
-      
-      <div class="section-header">
-      <h2 class="section-title">Featured Sneakers</h2>
+
+<!-- Featured Products & Controls Section -->
+<section class="featured-section" id="featured">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="featured-crown" aria-hidden="true">♛</span>
+      <h2 class="section-title">FEATURED SNEAKERS</h2>
+      <p class="featured-subtitle">
+        PREMIUM &bull; AFFORDABLE &bull; STYLISH
+      </p>
+      <span class="featured-accent"></span>
     </div>
 
-      <div class="filter-bar">
-        <div class="search-input-wrapper">
-          <input type="text" id="search-input" placeholder="Search sneakers by name..." />
-        </div>
+    <!-- Products loaded from Supabase -->
+    <div class="product-grid" id="product-grid"></div>
 
-        <div class="filter-pills">
-          <button class="pill-btn active" data-filter="all">All</button>
-          <button class="pill-btn" data-filter="New">New</button>
-          <button class="pill-btn" data-filter="Sale">Sale</button>
-          <button class="pill-btn" data-filter="Popular">Popular</button>
-        </div>
+    <!-- Search, Filters and View All -->
+    <div class="filter-bar">
+
+      <div class="search-input-wrapper">
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search for sneakers..."
+          aria-label="Search sneakers"
+        >
       </div>
 
-      <div class="product-grid" id="product-grid"></div>
+      <div class="filter-pills">
+        <button class="pill-btn active" data-filter="all">All</button>
+        <button class="pill-btn" data-filter="New">New</button>
+        <button class="pill-btn" data-filter="Sale">Sale</button>
+        <button class="pill-btn" data-filter="Popular">Popular</button>
+      </div>
+
+      <button
+        class="view-all-products-btn"
+        id="view-all-products-btn"
+        type="button"
+      >
+        VIEW ALL PRODUCTS &rarr;
+      </button>
 
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Slide-Out Shopping Cart Sidebar -->
   <div class="cart-overlay" id="cart-overlay"></div>
@@ -238,94 +253,80 @@
     </div>
   </div>
 
-
- <!-- WhatsApp Checkout Modal -->
+<!-- WhatsApp Checkout Modal -->
 <div class="modal-overlay" id="checkout-modal-overlay">
-
   <div class="modal-box checkout-box">
 
     <button
       class="modal-close"
       id="close-checkout-modal"
       type="button"
-    >
-      &times;
-    </button>
+      aria-label="Close checkout"
+    >&times;</button>
 
-    <h2>Complete Your Order</h2>
-
-    <p class="checkout-description">
-      Enter your details below and continue your order on WhatsApp.
-    </p>
+    <div class="checkout-heading">
+      <span class="checkout-crown" aria-hidden="true">♛</span>
+      <h2>Complete Your Order</h2>
+      <p class="checkout-description">
+        Almost there! Confirm your details to place your order on WhatsApp.
+      </p>
+    </div>
 
     <form id="checkout-form" class="checkout-form">
 
-      <!-- Customer Name -->
       <div class="form-group">
         <label for="customer-name">Full Name</label>
-
         <input
           type="text"
           id="customer-name"
-          placeholder="John Doe"
+          placeholder="Enter your full name"
+          autocomplete="name"
           required
         >
       </div>
 
-
-      <!-- Phone Number -->
       <div class="form-group">
-        <label for="customer-phone">
-          Phone Number
-        </label>
-
+        <label for="customer-phone">WhatsApp Number</label>
         <input
           type="tel"
           id="customer-phone"
           placeholder="08012345678"
+          autocomplete="tel"
           required
         >
       </div>
 
-
-      <!-- Delivery Address -->
       <div class="form-group">
-        <label for="customer-address">
-          Delivery Address
-        </label>
-
+        <label for="customer-address">Delivery Address</label>
         <textarea
           id="customer-address"
           placeholder="Enter your delivery address"
+          autocomplete="street-address"
+          rows="3"
           required
         ></textarea>
       </div>
 
-
-      <!-- Order Total -->
-      <div class="checkout-total">
-
-        <span>Total:</span>
-
-        <strong id="checkout-total-price">
-          ₦0
-        </strong>
-
+      <div class="checkout-summary">
+        <span>Order Total</span>
+        <strong id="checkout-total-price">₦0</strong>
       </div>
 
-
-      <!-- WhatsApp Button -->
       <button
-      type="submit"
-      class="checkout-btn whatsapp-checkout-btn"
-    >
-      Complete Payment
-    </button>
+        type="submit"
+        class="checkout-btn whatsapp-checkout-btn"
+      >
+        Complete Purchase &rarr;
+      </button>
+
+      <p class="checkout-note">
+        You'll be redirected to WhatsApp to complete your order.
+      </p>
+
     </form>
-
   </div>
-
 </div>
+
 
   <!-- Footer Section -->
   <footer class="footer" id="footer">

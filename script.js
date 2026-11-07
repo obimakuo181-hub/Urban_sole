@@ -67,6 +67,10 @@ let cart =
 
 let currentFilter = "all";
 let currentSearch = "";
+
+let showAllProducts = false;
+const FEATURED_PRODUCT_LIMIT = 8;
+
 let activeModalShoe = null;
 
 
@@ -268,62 +272,65 @@ function renderShoes() {
   }
 
 
-  gridContainer.innerHTML =
-    filteredShoes
-      .map(shoe => `
+  
 
-        <div
-          class="product-card"
-          onclick="openProductModal(${shoe.id})"
+const visibleShoes = showAllProducts
+  ? filteredShoes
+  : filteredShoes.slice(0, FEATURED_PRODUCT_LIMIT);
+
+const viewAllBtn = document.getElementById("view-all-products-btn");
+
+if (viewAllBtn) {
+  viewAllBtn.hidden = showAllProducts ||
+    filteredShoes.length <= FEATURED_PRODUCT_LIMIT;
+}
+
+gridContainer.innerHTML = visibleShoes
+
+  .map(shoe => `
+    <div class="product-card"
+         onclick="openProductModal(${shoe.id})">
+
+      <div class="card-image-wrapper">
+        ${shoe.badge ? `
+          <span class="badge ${shoe.badgeClass}">
+            ${shoe.badge === "Popular" ? "♛ " : ""}${shoe.badge}
+          </span>
+        ` : ""}
+
+        <img
+          src="${shoe.image}"
+          alt="${shoe.name}"
+          loading="lazy"
         >
+      </div>
 
-          <div class="card-image-wrapper">
+      <div class="card-info">
+        <h3 class="product-name">${shoe.name}</h3>
 
-            <span class="badge ${shoe.badgeClass}">
-              ${shoe.badge}
-            </span>
+        <p class="product-brand">
+          ${shoe.brand || "Premium Footwear"}
+        </p>
 
-            <img
-              src="${shoe.image}"
-              alt="${shoe.name}"
-              loading="lazy"
-            >
+        <div class="product-card-bottom">
+          <strong class="product-card-price">
+            ${shoe.price}
+          </strong>
 
-            <span class="product-price-tag">
-              ${shoe.price}
-            </span>
-
-          </div>
-
-
-          <div class="card-info">
-
-            <h3 class="product-name">
-              ${shoe.name}
-            </h3>
-
-            <button
-              class="add-to-cart-btn ${shoe.stockQuantity <= 0 || shoe.status?.toLowerCase() === "sold" ? "sold-out-btn" : ""}"
-              onclick="
-                event.stopPropagation();
-                addToCart(${shoe.id})
-              "
-              ${shoe.stockQuantity <= 0 || shoe.status?.toLowerCase() === "sold" ? "disabled" : ""}
-            >
-              ${
-                shoe.stockQuantity <= 0 ||
-                shoe.status?.toLowerCase() === "sold"
-                  ? "SOLD OUT"
-                  : "Add to Cart"
-              }
-            </button>
-
-          </div>
-
+          <button
+            type="button"
+            class="add-to-cart-btn"
+            aria-label="Add ${shoe.name} to cart"
+            onclick="event.stopPropagation(); addToCart(${shoe.id})"
+          >
+            🛒
+          </button>
         </div>
+      </div>
+    </div>
+  `)
+  .join("");
 
-      `)
-      .join("");
 
 
   initScrollReveal();
@@ -867,6 +874,15 @@ document.addEventListener(
 
     initScrollReveal();
 
+
+    // View All Products
+    const viewAllProductsBtn =
+      document.getElementById("view-all-products-btn");
+
+    viewAllProductsBtn?.addEventListener("click", () => {
+      showAllProducts = true;
+      renderShoes();
+    });
 
     // ====================================
     // SEARCH

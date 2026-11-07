@@ -1857,3 +1857,1483 @@ body {
     left: -65px;
   }
 }
+
+/* =====================================
+   URBAN SOLE — PREMIUM PRODUCT SECTION
+===================================== */
+
+.featured-section {
+  padding: 85px 0 75px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0px,
+      transparent 210px,
+      rgba(210, 198, 187, 0.12) 210px,
+      rgba(210, 198, 187, 0.12) 350px
+    ),
+    #f8f4f0;
+}
+
+/* Premium section heading */
+.featured-section .section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.featured-crown {
+  font-size: 42px;
+  color: #ffb900;
+  line-height: 1;
+}
+
+.featured-section .section-title {
+  font-size: clamp(30px, 4vw, 54px);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -2px;
+  color: #0d0d0d;
+}
+
+.featured-subtitle {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #171717;
+}
+
+.featured-accent {
+  display: block;
+  width: 150px;
+  height: 5px;
+  background: #ffb900;
+  border-radius: 10px;
+  transform: rotate(-3deg);
+  margin-top: 8px;
+}
+
+/* Four products per row */
+.featured-section .product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+}
+
+/* Premium product cards */
+.featured-section .product-card {
+  background: #fffdfb;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 28px rgba(35, 25, 15, 0.09);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-section .product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 38px rgba(35, 25, 15, 0.15);
+}
+
+/* Sneaker image area */
+.featured-section .card-image-wrapper {
+  height: 205px;
+  background:
+    linear-gradient(
+      135deg,
+      #faf7f4 0%,
+      #faf7f4 76%,
+      #ffbd00 76%,
+      #ffbd00 100%
+    );
+  border-radius: 0;
+}
+
+.featured-section .card-image-wrapper img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+}
+
+/* Product details */
+.featured-section .card-info {
+  padding: 16px 18px 20px;
+}
+
+.featured-section .product-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111;
+}
+
+/* Search and filters below products */
+.featured-section .filter-bar {
+  margin-top: 42px;
+  margin-bottom: 0;
+  justify-content: center;
+  gap: 14px;
+}
+
+.featured-section .search-input-wrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.featured-section .search-input-wrapper input {
+  border-radius: 30px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 2px solid #e4ded8;
+}
+
+.featured-section .pill-btn {
+  border-radius: 30px;
+  padding: 12px 17px;
+}
+
+.featured-section .pill-btn.active {
+  background: #111;
+  color: #fff;
+}
+
+/* View All Products */
+.view-all-products-btn {
+  background: #fff8e7;
+  border: 3px solid #ffb900;
+  border-radius: 30px;
+  padding: 13px 24px;
+  color: #111;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.view-all-products-btn:hover {
+  background: #ffb900;
+  transform: translateY(-3px);
+}
+
+/* Responsive layout */
+@media (max-width: 1000px) {
+  .featured-section .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .featured-section {
+    padding: 55px 0;
+  }
+
+  .featured-section .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .featured-section .section-title {
+    font-size: 30px;
+  }
+
+  .featured-subtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .featured-section .card-image-wrapper {
+    height: 145px;
+  }
+
+  .featured-section .card-info {
+    padding: 12px;
+  }
+
+  .featured-section .product-name {
+    font-size: 13px;
+  }
+
+  .featured-section .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .featured-section .search-input-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .featured-section .filter-pills {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* =====================================
+   URBAN SOLE — PREMIUM PRODUCT CARDS
+===================================== */
+
+/* Product card details */
+.featured-section .card-info {
+  padding: 14px 18px 18px;
+}
+
+.featured-section .product-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.featured-section .product-brand {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Price and cart button on the same row */
+.product-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.product-card-price {
+  font-size: 19px;
+  font-weight: 900;
+  color: #111;
+}
+
+/* Small golden cart button */
+.featured-section .add-to-cart-btn {
+  width: 46px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffbd00;
+  color: #111;
+  border: none;
+  border-radius: 12px;
+
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.featured-section .add-to-cart-btn:hover {
+  background: #e6a900;
+  transform: translateY(-3px);
+}
+
+/* Rounded product badges */
+.featured-section .badge {
+  top: 14px;
+  left: 14px;
+  padding: 7px 15px;
+  border-radius: 25px;
+  font-size: 12px;
+  text-transform: none;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .featured-section .card-info {
+    padding: 12px;
+  }
+
+  .featured-section .product-name {
+    font-size: 13px;
+  }
+
+  .featured-section .product-brand {
+    font-size: 11px;
+  }
+
+  .product-card-price {
+    font-size: 15px;
+  }
+
+  .featured-section .add-to-cart-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+}
+
+
+.view-all-products-btn[hidden] {
+  display: none !important;
+}
+
+/* Compact Featured Sneakers heading */
+.featured-section {
+  padding-top: 42px;
+}
+
+.featured-section .section-header {
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.featured-section .featured-crown {
+  font-size: 27px;
+}
+
+.featured-section .section-title {
+  font-size: clamp(24px, 2.8vw, 38px);
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.featured-section .featured-subtitle {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.featured-section .featured-accent {
+  width: 110px;
+  height: 4px;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .featured-section {
+    padding-top: 30px;
+  }
+
+  .featured-section .section-header {
+    margin-bottom: 22px;
+  }
+
+  .featured-section .section-title {
+    font-size: 24px;
+  }
+
+  .featured-section .featured-subtitle {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}
+
+/* URBAN SOLE — CREAM & GOLD HERO */
+.hero-banner {
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 72%,
+      #ffbd00 72%,
+      #ffbd00 100%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      #faf7f3 0px,
+      #faf7f3 180px,
+      #f0eae4 180px,
+      #f0eae4 340px
+    );
+}
+
+/* Warm lighting behind the rotating shoe */
+.hero-banner::before {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 196, 70, 0.25),
+    transparent 70%
+  );
+  clip-path: none;
+  filter: blur(35px);
+}
+
+/* Softer floor shadow */
+.hero-bg-wrapper::after {
+  background: radial-gradient(
+    ellipse,
+    rgba(30, 22, 15, 0.45) 0%,
+    rgba(80, 55, 25, 0.15) 50%,
+    transparent 80%
+  );
+}
+
+/* Dark lettering on cream background */
+.hero-brand-name {
+  color: #111;
+  text-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* URBAN SOLE — LEFT BRANDING, RIGHT SNEAKER */
+@media (min-width: 769px) {
+  .hero-content-overlay {
+    left: 5%;
+    right: auto;
+    width: 40%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+  }
+
+  .hero-brand-name {
+    font-size: clamp(48px, 5vw, 76px);
+    line-height: 1.05;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-bg-wrapper model-viewer {
+    left: 23%;
+  }
+
+  .hero-banner::before {
+    left: 48%;
+  }
+
+  .hero-bg-wrapper::after {
+    left: 65%;
+  }
+}
+
+/* Premium stacked hero heading */
+@media (min-width: 769px) {
+  .hero-brand-name {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(58px, 5.5vw, 82px);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    white-space: normal;
+  }
+}
+
+/* Stack URBAN and SOLE */
+.hero-brand-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.hero-word {
+  display: block;
+  white-space: nowrap;
+  line-height: 0.95;
+}
+
+/* FIX HERO BRANDING */
+.hero-content-overlay .hero-crown {
+  display: block;
+  font-size: 48px;
+  color: #ffbd00 !important;
+  line-height: 1;
+}
+
+.hero-content-overlay .hero-gold-line {
+  display: block;
+  width: 75%;
+  max-width: 350px;
+  height: 7px;
+  background: #ffbd00;
+  border-radius: 20px;
+  transform: rotate(-3deg);
+  margin: 8px auto;
+}
+
+.hero-content-overlay .hero-tagline {
+  color: #111 !important;
+  font-size: 23px;
+  font-weight: 900;
+  font-style: italic;
+  margin: 0;
+}
+
+.hero-content-overlay .hero-description {
+  color: #222 !important;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.hero-content-overlay .hero-description span {
+  color: #ffbd00;
+}
+
+.hero-content-overlay .shop-now-btn {
+  background: #ffbd00;
+  color: #111;
+  border-radius: 30px;
+  padding: 15px 35px;
+  margin-top: 10px;
+}
+
+/* Keep all branding elements neatly grouped */
+@media (min-width: 769px) {
+  .hero-content-overlay {
+    gap: 10px;
+  }
+}
+
+/* Reduce gap between hero and featured products */
+.featured-section {
+  padding-top: 20px;
+}
+
+.featured-section .section-header {
+  margin-bottom: 22px;
+  gap: 5px;
+}
+
+.featured-section .featured-crown {
+  font-size: 25px;
+}
+
+.featured-section .section-title {
+  font-size: clamp(24px, 2.6vw, 36px);
+}
+
+@media (max-width: 600px) {
+  .featured-section {
+    padding-top: 18px;
+  }
+
+  .featured-section .section-header {
+    margin-bottom: 18px;
+  }
+}
+
+/* =========================================
+   URBAN SOLE — MOBILE HERO FIX
+========================================= */
+
+@media (max-width: 768px) {
+
+  .hero-banner {
+    height: 650px;
+    min-height: 650px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Branding at the top */
+  .hero-content-overlay {
+    position: absolute;
+    top: 22px;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    padding: 0 16px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 6px;
+    z-index: 5;
+    transform: none;
+  }
+
+  .hero-content-overlay .hero-crown {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .hero-brand-name {
+    font-size: 43px;
+    line-height: 0.9;
+    letter-spacing: -1px;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .hero-word {
+    line-height: 0.95;
+  }
+
+  .hero-content-overlay .hero-gold-line {
+    width: 155px;
+    height: 4px;
+    margin: 8px auto;
+  }
+
+  .hero-content-overlay .hero-tagline {
+    font-size: 17px;
+    margin: 0;
+  }
+
+  .hero-content-overlay .hero-description {
+    font-size: 9px;
+    letter-spacing: 1px;
+    white-space: normal;
+  }
+
+  .hero-content-overlay .shop-now-btn {
+    margin-top: 8px;
+    padding: 12px 28px;
+    font-size: 11px;
+  }
+
+  /* Position rotating sneaker below branding */
+  .hero-bg-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-bg-wrapper model-viewer {
+    position: absolute;
+    top: 265px;
+    left: 0;
+    width: 100% !important;
+    height: 340px !important;
+    pointer-events: none;
+  }
+
+  /* Move spotlight behind sneaker */
+  .hero-banner::before {
+    top: 270px;
+    left: 10%;
+    width: 80%;
+    height: 280px;
+  }
+
+  /* Move floor shadow beneath sneaker */
+  .hero-bg-wrapper::after {
+    top: auto;
+    bottom: 35px;
+    left: 20%;
+    width: 60%;
+    height: 50px;
+  }
+}
+
+/* COMPACT MOBILE HERO */
+@media (max-width: 768px) {
+
+  .hero-banner {
+    height: 510px;
+    min-height: 510px;
+  }
+
+  .hero-content-overlay {
+    top: 12px;
+    gap: 3px;
+  }
+
+  .hero-brand-name {
+    font-size: 37px;
+  }
+
+  .hero-content-overlay .hero-gold-line {
+    margin: 4px auto;
+  }
+
+  .hero-content-overlay .shop-now-btn {
+    margin-top: 4px;
+  }
+
+  .hero-bg-wrapper model-viewer {
+    top: 210px;
+    height: 270px !important;
+  }
+
+  .hero-banner::before {
+    top: 210px;
+    height: 240px;
+  }
+
+  .hero-bg-wrapper::after {
+    bottom: 15px;
+  }
+}
+
+/* =========================================
+   URBAN SOLE — PREMIUM SHOPPING CART
+========================================= */
+
+#cart-overlay.open {
+  background: rgba(12, 10, 8, 0.55);
+  backdrop-filter: blur(5px);
+}
+
+#cart-drawer {
+  width: min(440px, 100%);
+  max-width: 440px;
+  right: 0;
+  height: 100dvh;
+  background: #f8f4ef;
+  border-left: 1px solid #e9dfd1;
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.18);
+  transform: translateX(105%);
+  transition: transform 0.35s ease;
+}
+
+#cart-drawer.open {
+  transform: translateX(0);
+}
+
+#cart-drawer .cart-header {
+  padding: 26px 24px;
+  background: #fffdf9;
+  border-bottom: 1px solid #eadfce;
+}
+
+#cart-drawer .cart-header h3 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.4px;
+}
+
+#cart-drawer .close-cart-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1e9df;
+  color: #111;
+  font-size: 25px;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease;
+}
+
+#cart-drawer .close-cart-btn:hover {
+  background: #ffbf00;
+}
+
+#cart-drawer .cart-items {
+  padding: 22px 18px;
+}
+
+#cart-drawer .cart-item-row {
+  background: #fff;
+  border: 1px solid #eee3d5;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 14px;
+  gap: 12px;
+  box-shadow: 0 5px 18px rgba(30, 20, 10, 0.04);
+}
+
+#cart-drawer .cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+#cart-drawer .cart-item-info h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+#cart-drawer .cart-item-info p {
+  color: #71685e;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#cart-drawer .cart-item-remove {
+  color: #a33b32;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#cart-drawer .cart-footer {
+  margin-top: auto;
+  padding: 24px;
+  background: #fffdf9;
+  border-top: 1px solid #eadfce;
+}
+
+#cart-drawer .cart-subtotal {
+  font-size: 17px;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+#cart-drawer #cart-subtotal-price {
+  font-weight: 900;
+}
+
+#cart-drawer .checkout-btn {
+  min-height: 52px;
+  background: #111;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: background 0.2s ease,
+              transform 0.2s ease;
+}
+
+#cart-drawer .checkout-btn:hover {
+  background: #d9a529;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  #cart-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #cart-drawer .cart-header,
+  #cart-drawer .cart-footer {
+    padding: 20px;
+  }
+}
+
+/* URBAN SOLE — CART DETAIL REFINEMENT */
+
+#cart-drawer .cart-item-row {
+  align-items: flex-start;
+  padding: 20px 18px;
+  min-height: 135px;
+}
+
+#cart-drawer .cart-item-info h4 {
+  font-size: 17px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+#cart-drawer .cart-item-info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Quantity buttons */
+#cart-drawer .cart-item-info button:not(.cart-item-remove) {
+  min-width: 30px;
+  min-height: 30px;
+  padding: 4px 8px;
+  background: #fff8e8;
+  border: 1px solid #e7d4ad;
+  border-radius: 8px;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#cart-drawer .cart-item-info button:not(.cart-item-remove):hover {
+  background: #ffbf00;
+  border-color: #ffbf00;
+}
+
+#cart-drawer .cart-item-remove {
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+#cart-drawer .cart-item-remove:hover {
+  background: #fff0ee;
+}
+
+/* Center the shopping cart close icon */
+#cart-drawer .close-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  line-height: 1;
+  font-size: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   URBAN SOLE — GLASS NAVBAR
+========================================= */
+
+html body header.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(255, 252, 247, 0.62) !important;
+
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+
+  border-bottom: 1px solid rgba(212, 170, 75, 0.35);
+
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.07);
+}
+
+/* Prevent the inner container from covering the glass */
+html body .navbar .nav-container {
+  background: transparent !important;
+}
+
+/* Premium navigation links */
+.navbar .nav-link {
+  color: #171717;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #c18d21;
+}
+
+/* Icon hover effects */
+.navbar .icon-btn:hover {
+  color: #c18d21;
+}
+
+/* Mobile glass navbar */
+@media (max-width: 768px) {
+  html body header.navbar {
+    background: rgba(255, 252, 247, 0.75) !important;
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+}
+
+/* =========================================
+   URBAN SOLE — PREMIUM MOBILE MENU
+========================================= */
+
+@media (max-width: 768px) {
+
+  /* Glass dropdown */
+  .navbar .mobile-menu {
+    background: rgba(255, 252, 247, 0.94);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+
+    border: 1px solid rgba(212, 170, 75, 0.25);
+    border-top: none;
+    border-radius: 0 0 18px 18px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+
+    padding: 10px 12px 14px;
+    max-height: calc(100dvh - 80px);
+    overflow-y: auto;
+  }
+
+  /* Compact menu links */
+  .navbar .mobile-nav-link {
+    display: flex;
+    align-items: center;
+
+    min-height: 44px;
+    padding: 12px 16px;
+    margin: 2px 0;
+
+    border-radius: 10px;
+    background: transparent;
+
+    color: #171717;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .navbar .mobile-nav-link:hover,
+  .navbar .mobile-nav-link:focus-visible {
+    background: rgba(255, 191, 0, 0.13);
+    color: #9a6b00;
+  }
+
+  .navbar .mobile-nav-link.active {
+    background: rgba(255, 191, 0, 0.17);
+    color: #111;
+    border-left: 3px solid #ffbf00;
+  }
+
+  /* Hamburger / close button */
+  .navbar .mobile-menu-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    color: #111;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .navbar .mobile-menu-btn:hover {
+    color: #c18d21;
+  }
+}
+
+/* =========================================
+   URBAN SOLE — PREMIUM CHECKOUT MODAL
+========================================= */
+
+#checkout-modal-overlay {
+  background: rgba(12, 12, 12, 0.65);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#checkout-modal-overlay .checkout-box {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  margin: auto;
+  padding: 34px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 190, 0, 0.3);
+  background: #fffdf9;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+/* Close button */
+#checkout-modal-overlay .modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: #f5efe6;
+  color: #111;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#checkout-modal-overlay .modal-close:hover {
+  background: #ffbd00;
+}
+
+/* Checkout heading */
+.checkout-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.checkout-crown {
+  display: block;
+  color: #ffb900;
+  font-size: 34px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.checkout-heading h2 {
+  color: #111;
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.checkout-heading .checkout-description {
+  color: #777;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Form */
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+#checkout-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+}
+
+#checkout-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222;
+}
+
+#checkout-form input,
+#checkout-form textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #e8dfd4;
+  border-radius: 10px;
+  background: #faf7f3;
+  color: #111;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#checkout-form input:focus,
+#checkout-form textarea:focus {
+  border-color: #ffbd00;
+  box-shadow: 0 0 0 3px rgba(255, 189, 0, 0.12);
+}
+
+#checkout-form textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+/* Total */
+.checkout-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 17px;
+  border-radius: 12px;
+  background: #f5efe6;
+  color: #111;
+}
+
+.checkout-summary span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.checkout-summary strong {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+/* WhatsApp checkout button */
+#checkout-form .whatsapp-checkout-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #ffbd00;
+  color: #111;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#checkout-form .whatsapp-checkout-btn:hover {
+  background: #e8aa00;
+  transform: translateY(-2px);
+}
+
+.checkout-note {
+  text-align: center;
+  font-size: 11px;
+  color: #888;
+  margin: 0;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  #checkout-modal-overlay {
+    padding: 12px;
+  }
+
+  #checkout-modal-overlay .checkout-box {
+    max-height: calc(100dvh - 24px);
+    padding: 28px 20px 22px;
+    border-radius: 17px;
+  }
+
+  .checkout-heading h2 {
+    font-size: 22px;
+  }
+
+  .checkout-heading {
+    padding-top: 12px;
+    margin-bottom: 18px;
+  }
+
+  #checkout-form {
+    gap: 13px;
+  }
+
+  .checkout-summary strong {
+    font-size: 18px;
+  }
+}
+
+
+/* =====================================
+   URBAN SOLE — MOBILE CART FIX
+===================================== */
+
+@media (max-width: 768px) {
+
+  /* Keep cart within the visible screen */
+  .cart-sidebar {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    height: min(85dvh, 700px) !important;
+    max-height: 85dvh !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    border-radius: 18px 18px 0 0;
+    overflow: hidden !important;
+    box-sizing: border-box;
+  }
+
+  /* Product list scrolls independently */
+  .cart-items {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+
+  /* Keep checkout button visible */
+  .cart-footer {
+    position: relative !important;
+    flex: 0 0 auto !important;
+    bottom: auto !important;
+
+    width: 100%;
+    padding: 16px 20px calc(18px + env(safe-area-inset-bottom));
+    background: #fffdf9;
+    box-sizing: border-box;
+  }
+
+  .cart-footer button {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+/* ======================================
+   URBAN SOLE — MOBILE CART LAYOUT FIX
+====================================== */
+
+@media (max-width: 768px) {
+
+  #cart-drawer {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 85dvh !important;
+    max-height: 85dvh !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    border-radius: 18px 18px 0 0;
+    overflow: hidden !important;
+    box-sizing: border-box;
+  }
+
+  #cart-drawer .cart-header {
+    flex: 0 0 auto !important;
+  }
+
+  #cart-drawer .cart-items {
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    padding-bottom: 12px;
+  }
+
+  #cart-drawer .cart-footer {
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    margin-top: auto !important;
+    padding: 12px 18px calc(12px + env(safe-area-inset-bottom)) !important;
+    background: #fffdf9;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
+  #cart-drawer .cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  #cart-drawer #open-checkout-btn {
+    display: block !important;
+    width: 100% !important;
+    min-height: 46px;
+  }
+}
+
+/* =========================================
+   URBAN SOLE — MY PAYMENTS UI REFINEMENT
+========================================= */
+
+/* Main payments panel */
+#wallet-drawer {
+  background: #faf7f2;
+  overflow: hidden;
+}
+
+/* Header */
+#wallet-drawer .wallet-header {
+  background: #ffffff;
+  padding: 22px 24px;
+  border-bottom: 1px solid #eee3d3;
+}
+
+/* Order history scrolling */
+#wallet-orders {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px 18px;
+  gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #d7c8ae transparent;
+}
+
+/* Individual order cards */
+#wallet-drawer .wallet-order-item {
+  background: #ffffff;
+  border: 1px solid #eee4d6;
+  border-radius: 16px;
+  padding: 18px;
+  gap: 14px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.035);
+}
+
+/* Order number and payment status */
+#wallet-drawer .wallet-order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f0ebe4;
+}
+
+#wallet-drawer .wallet-order-header h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111111;
+}
+
+/* Payment status */
+#wallet-drawer .wallet-order-header p {
+  background: #fff2d5;
+  color: #a66300;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Shoe details */
+#wallet-drawer .wallet-shoe-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 0;
+}
+
+#wallet-drawer .wallet-shoe-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: #f6f1e9;
+}
+
+#wallet-drawer .wallet-shoe-info {
+  flex: 1;
+  min-width: 0;
+}
+
+#wallet-drawer .wallet-shoe-info p {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Product unavailable warning */
+#wallet-drawer .wallet-order-item > p {
+  background: #fff8f5;
+  border: 1px solid #f8e5de;
+  border-left: 3px solid #e56b50;
+  border-radius: 10px;
+  padding: 13px;
+  color: #66483e !important;
+  font-size: 12px;
+  line-height: 1.7;
+  font-weight: 400 !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #wallet-orders {
+    padding: 14px 12px;
+  }
+
+  #wallet-drawer .wallet-order-item {
+    padding: 14px;
+  }
+
+  #wallet-drawer .wallet-header {
+    padding: 16px 18px;
+  }
+}
+
