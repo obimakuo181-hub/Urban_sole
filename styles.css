@@ -1,16 +1,13 @@
-/* Reset & Fonts */
+/* Urban Sole | styles.css | cascade-preserving cleanup */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-
 body {
   background-color: #f9f9f9;
 }
-
-/* Navbar Wrapper */
 .navbar {
   width: 100%;
   background-color: #ffffff;
@@ -19,21 +16,17 @@ body {
   top: 0;
   z-index: 1000;
 }
-/* Logo Styling */
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
 }
-
-/* Fixes the huge image expansion */
 .logo-img {
-  height: 40px; /* Adjust height as needed (e.g., 35px to 45px) */
-  width: auto;  /* Maintains the original aspect ratio */
+  height: 40px;
+  width: auto;
   object-fit: contain;
 }
-
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -42,8 +35,6 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-
-/* 1. Left: Brand Logo */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -51,25 +42,20 @@ body {
   text-decoration: none;
   color: #111111;
 }
-
 .logo-icon {
   width: 24px;
   height: 24px;
 }
-
 .brand-name {
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
-
-/* 2. Center: Navigation Links */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 28px;
 }
-
 .nav-link {
   text-decoration: none;
   color: #555555;
@@ -78,74 +64,45 @@ body {
   position: relative;
   transition: color 0.2s ease;
 }
-
-/* =========================
-   NAVBAR LINK ANIMATION
-========================= */
-
 .nav-link {
   text-decoration: none;
   color: #555555;
   font-size: 0.9rem;
   font-weight: 500;
   position: relative;
-
-  transition:
-    color 0.2s ease,
-    font-weight 0.2s ease;
+  transition: color 0.2s ease, font-weight 0.2s ease;
 }
-
-/* Small animated underline */
 .nav-link::after {
-  content: '';
-
+  content: "";
   position: absolute;
-
   left: 50%;
   bottom: -6px;
-
   width: 0;
   height: 2px;
-
   background-color: #111111;
-
   border-radius: 2px;
-
   transform: translateX(-50%);
-
   transition: width 0.3s ease;
 }
-
-
-/* Hover effect */
 .nav-link:hover {
   color: #111111;
   font-weight: 600;
 }
-
 .nav-link:hover::after {
   width: 100%;
 }
-
-
-/* Keep underline on the current/active page */
 .nav-link.active {
   color: #111111;
   font-weight: 600;
 }
-
 .nav-link.active::after {
   width: 100%;
 }
-
-
-/* 3. Right: Action Buttons */
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 16px;
 }
-
 .icon-btn {
   background: none;
   border: none;
@@ -159,12 +116,9 @@ body {
   transition: background-color 0.2s ease;
   position: relative;
 }
-
 .icon-btn:hover {
   background-color: #f1f1f1;
 }
-
-/* Cart Badge */
 .cart-badge {
   position: absolute;
   top: 2px;
@@ -180,17 +134,14 @@ body {
   align-items: center;
   justify-content: center;
 }
-/* Hero Container with Relative Positioning */
 .hero-banner {
   position: relative;
   width: 100%;
-  height: 480px; /* Adjust height as needed */
+  height: 480px;
   display: flex;
   align-items: center;
   overflow: hidden;
 }
-
-/* Full Width Background Image Wrapper */
 .hero-bg-wrapper {
   position: absolute;
   top: 0;
@@ -199,32 +150,22 @@ body {
   height: 100%;
   z-index: 1;
 }
-
 .hero-bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
-
-/* Dark Gradient Overlay for Text Readability */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to right, 
-    rgba(10, 10, 10, 0.95) 0%, 
-    rgba(10, 10, 10, 0.7) 45%, 
-    rgba(10, 10, 10, 0.1) 100%
-  );
+  background: linear-gradient( to right, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.7) 45%, rgba(10, 10, 10, 0.1) 100% );
 }
-/* Hero brand name */
-
 .hero-brand-name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: clamp(42px, 4.8vw, 72px);
   font-weight: 900;
   letter-spacing: 6px;
@@ -234,7 +175,6 @@ body {
   text-transform: uppercase;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
-
 .hero-content-overlay {
   display: flex;
   flex-direction: column;
@@ -242,9 +182,6 @@ body {
   justify-content: flex-end;
   gap: 10px;
 }
-
-
-/* Floating Text Overlay Positioned On Top */
 .hero-content-overlay {
   position: relative;
   z-index: 2;
@@ -254,7 +191,6 @@ body {
   color: #ffffff;
   padding-left: 20px;
 }
-
 .hero-title {
   font-size: 3.5rem;
   font-weight: 800;
@@ -262,17 +198,14 @@ body {
   margin-bottom: 12px;
   letter-spacing: -1px;
 }
-
 .hero-description {
   font-size: 1.05rem;
   color: #d1d5db;
   margin-bottom: 28px;
 }
-
-/* Yellow Action Button */
 .shop-now-btn {
   display: inline-block;
-  background-color: #fabb13; /* Bright yellow/gold color */
+  background-color: #fabb13;
   color: #000000;
   font-weight: 700;
   font-size: 0.9rem;
@@ -285,52 +218,41 @@ body {
   background-color: #10b981;
   color: #ffffff;
 }
-
 .badge-gray {
   background-color: #6b7280;
   color: #ffffff;
 }
-/* Container Spacing */
 .featured-section {
   padding: 40px 0;
   background-color: #ffffff;
 }
-
 .container {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
 }
-
-/* Header Row Alignment */
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
-
 .section-title {
   font-size: 1.25rem;
   font-weight: 800;
   color: #111111;
 }
-
 .view-all-link {
   font-size: 0.85rem;
   font-weight: 600;
   color: #555555;
   text-decoration: none;
 }
-
-/* Force 4 Columns Across Screen */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
-
-/* Card Container */
 .product-card {
   display: flex;
   flex-direction: column;
@@ -338,8 +260,6 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
-
-/* Gray Image Container Box */
 .card-image-wrapper {
   position: relative;
   width: 100%;
@@ -351,14 +271,11 @@ body {
   justify-content: center;
   overflow: hidden;
 }
-
 .card-image-wrapper img {
   max-width: 85%;
   max-height: 85%;
   object-fit: contain;
 }
-
-/* Badge Positioning (Top Left inside Image box) */
 .badge {
   position: absolute;
   top: 10px;
@@ -370,63 +287,52 @@ body {
   z-index: 2;
   text-transform: uppercase;
 }
-
 .badge-dark {
   background-color: #111111;
   color: #ffffff;
 }
-
 .badge-red {
   background-color: #e53e3e;
   color: #ffffff;
 }
-
 .badge-yellow {
   background-color: #fabb13;
   color: #111111;
 }
-
-/* Text Content below Image */
 .card-info {
   padding-top: 10px;
 }
-
 .product-name {
   font-size: 0.9rem;
   font-weight: 700;
   color: #111111;
   margin: 0 0 4px 0;
 }
-
 .product-price {
   font-size: 0.85rem;
   font-weight: 600;
   color: #666666;
   margin: 0;
 }
-/* Gray Image Container Box */
 .card-image-wrapper {
   position: relative;
   width: 100%;
-  height: 200px; /* Slightly increased height to make room */
+  height: 200px;
   background-color: #f5f5f5;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 35px 15px; /* Adds inner spacing so images don't touch edges or text */
+  padding: 35px 15px;
 }
-
 .card-image-wrapper img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: 6px; /* Softens edges if full background images are used */
-  z-index: 1; /* Keeps image behind badges and price */
+  border-radius: 6px;
+  z-index: 1;
 }
-
-/* Badge Positioning (Top Left) */
 .badge {
   position: absolute;
   top: 10px;
@@ -435,11 +341,9 @@ body {
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 4px;
-  z-index: 3; /* Render above image */
+  z-index: 3;
   text-transform: uppercase;
 }
-
-/* Price Tag Positioning (Bottom Left) */
 .product-price-tag {
   position: absolute;
   bottom: 10px;
@@ -447,24 +351,20 @@ body {
   font-size: 0.85rem;
   font-weight: 700;
   color: #111111;
-  background-color: rgba(255, 255, 255, 0.85); /* Subtle white pill background so price is always readable */
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 2px 6px;
   border-radius: 4px;
-  z-index: 3; /* Render above image */
+  z-index: 3;
 }
-
-/* Text Content below Image */
 .card-info {
   padding-top: 10px;
 }
-
 .product-name {
   font-size: 0.9rem;
   font-weight: 700;
   color: #111111;
   margin: 0;
 }
-/* Filter & Search Bar Layout */
 .filter-bar {
   display: flex;
   justify-content: space-between;
@@ -473,12 +373,10 @@ body {
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
-
 .search-input-wrapper {
   flex: 1;
   min-width: 250px;
 }
-
 .search-input-wrapper input {
   width: 100%;
   padding: 10px 16px;
@@ -488,16 +386,13 @@ body {
   outline: none;
   transition: border-color 0.2s ease;
 }
-
 .search-input-wrapper input:focus {
   border-color: #111111;
 }
-
 .filter-pills {
   display: flex;
   gap: 8px;
 }
-
 .pill-btn {
   border: 1px solid #e0e0e0;
   background-color: #ffffff;
@@ -509,15 +404,11 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
-.pill-btn:hover,
-.pill-btn.active {
+.pill-btn:hover, .pill-btn.active {
   background-color: #111111;
   color: #ffffff;
   border-color: #111111;
 }
-
-/* Slide-out Cart Drawer */
 .cart-overlay {
   position: fixed;
   top: 0;
@@ -530,12 +421,10 @@ body {
   visibility: hidden;
   transition: all 0.3s ease;
 }
-
 .cart-overlay.open {
   opacity: 1;
   visibility: visible;
 }
-
 .cart-drawer {
   position: fixed;
   top: 0;
@@ -550,11 +439,9 @@ body {
   flex-direction: column;
   transition: right 0.3s ease;
 }
-
 .cart-drawer.open {
   right: 0;
 }
-
 .cart-header {
   padding: 20px;
   border-bottom: 1px solid #eaeaea;
@@ -562,12 +449,10 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
 .cart-header h3 {
   font-size: 1.1rem;
   font-weight: 700;
 }
-
 .close-cart-btn {
   background: none;
   border: none;
@@ -575,20 +460,17 @@ body {
   cursor: pointer;
   color: #555;
 }
-
 .cart-items {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
 }
-
 .empty-cart-msg {
   color: #777;
   font-size: 0.9rem;
   text-align: center;
   margin-top: 40px;
 }
-
 .cart-item-row {
   display: flex;
   justify-content: space-between;
@@ -597,18 +479,15 @@ body {
   padding-bottom: 12px;
   border-bottom: 1px solid #f5f5f5;
 }
-
 .cart-item-info h4 {
   font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 4px;
 }
-
 .cart-item-info p {
   font-size: 0.85rem;
   color: #666;
 }
-
 .cart-item-remove {
   background: none;
   border: none;
@@ -616,12 +495,10 @@ body {
   font-size: 0.8rem;
   cursor: pointer;
 }
-
 .cart-footer {
   padding: 20px;
   border-top: 1px solid #eaeaea;
 }
-
 .cart-subtotal {
   display: flex;
   justify-content: space-between;
@@ -629,7 +506,6 @@ body {
   font-weight: 700;
   margin-bottom: 16px;
 }
-
 .checkout-btn {
   width: 100%;
   background-color: #111111;
@@ -641,7 +517,6 @@ body {
   font-size: 0.95rem;
   cursor: pointer;
 }
-
 .add-to-cart-btn {
   margin-top: 8px;
   width: 100%;
@@ -655,11 +530,9 @@ body {
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-
 .add-to-cart-btn:hover {
   opacity: 0.85;
 }
-/* Modals Core Styling */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -675,12 +548,10 @@ body {
   visibility: hidden;
   transition: all 0.25s ease;
 }
-
 .modal-overlay.open {
   opacity: 1;
   visibility: visible;
 }
-
 .modal-box {
   background: #ffffff;
   border-radius: 12px;
@@ -691,11 +562,9 @@ body {
   transform: translateY(20px);
   transition: transform 0.25s ease;
 }
-
 .modal-overlay.open .modal-box {
   transform: translateY(0);
 }
-
 .modal-close {
   position: absolute;
   top: 15px;
@@ -706,15 +575,12 @@ body {
   cursor: pointer;
   color: #666;
 }
-
-/* Product Modal Layout */
 .modal-product-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: center;
 }
-
 .modal-img-wrapper {
   background: #f5f5f5;
   border-radius: 8px;
@@ -723,107 +589,87 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 .modal-img-wrapper img {
   width: 100%;
   object-fit: contain;
 }
-
 .modal-info h2 {
   font-size: 1.3rem;
   margin: 10px 0 6px 0;
 }
-
 .modal-price {
   font-size: 1.1rem;
   font-weight: 700;
   color: #111;
   margin-bottom: 12px;
 }
-
 .modal-desc {
   font-size: 0.85rem;
   color: #666;
   line-height: 1.4;
   margin-bottom: 20px;
 }
-
-/* Checkout Modal */
 .checkout-box {
   max-width: 420px;
 }
-
 .checkout-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-top: 15px;
 }
-
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-
 .form-group label {
   font-size: 0.8rem;
   font-weight: 600;
   color: #333;
 }
-
 .form-group input {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 0.9rem;
 }
-
 .checkout-total {
   display: flex;
   justify-content: space-between;
   font-size: 1.05rem;
   margin: 10px 0;
 }
-
-/* Footer Section */
 .footer {
   background-color: #111111;
   color: #ffffff;
   padding: 50px 0 20px 0;
   margin-top: 60px;
 }
-
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
   margin-bottom: 40px;
 }
-
 .footer-col h3, .footer-col h4 {
   margin-bottom: 15px;
 }
-
 .footer-col p, .footer-col li {
   font-size: 0.85rem;
   color: #aaa;
   line-height: 1.6;
 }
-
 .footer-col ul {
   list-style: none;
 }
-
 .footer-col a {
   color: #aaa;
   text-decoration: none;
 }
-
 .footer-col a:hover {
   color: #fff;
 }
-
 .footer-bottom {
   border-top: 1px solid #222;
   text-align: center;
@@ -831,44 +677,27 @@ body {
   font-size: 0.8rem;
   color: #666;
 }
-/* =========================
-   HERO BANNER HOVER GLOW SWEEP (Slower & Smoother)
-========================= */
-
 .hero-banner {
   position: relative;
   overflow: hidden;
 }
-
 .hero-banner::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent 35%,
-    rgba(250, 187, 19, 0.12) 45%, 
-    rgba(0, 210, 196, 0.22) 50%, 
-    transparent 65%
-  );
+  background: linear-gradient( 120deg, transparent 35%, rgba(250, 187, 19, 0.12) 45%, rgba(0, 210, 196, 0.22) 50%, transparent 65% );
   transform: translateX(-100%) rotate(25deg);
   pointer-events: none;
   z-index: 2;
   transition: transform 0s;
 }
-
 .hero-banner:hover::after {
   transform: translateX(100%) rotate(25deg);
-  /* Increased duration from 1.2s to 2.5s for a slower, smoother sweep */
-  transition: transform 4s cubic-bezier(0.16, 1, 0.3, 1); 
+  transition: transform 4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-/* =========================
-   HERO TITLE BOUNCE ENTRANCE
-========================= */
-
 @keyframes bounceEntrance {
   0% {
     opacity: 0;
@@ -876,44 +705,32 @@ body {
   }
   60% {
     opacity: 1;
-    transform: translateY(15px); /* Small bounce overshoot */
+    transform: translateY(15px);
   }
   80% {
-    transform: translateY(-8px);  /* Rebound upward slightly */
+    transform: translateY(-8px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);     /* Settles perfectly in place */
+    transform: translateY(0);
   }
 }
-
 .hero-title {
-  /* Applies the bounce animation on page load */
   animation: bounceEntrance 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
-/* =========================
-   PRODUCT CARD HOVER MICRO-INTERACTIONS
-========================= */
 .product-card {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .product-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
-
 .product-card:hover .card-image-wrapper img {
   transform: scale(1.06);
 }
-
 .card-image-wrapper img {
   transition: transform 0.3s ease;
 }
-
-/* =========================
-   TOAST NOTIFICATION POPUP
-========================= */
 #toast-notification {
   position: fixed;
   bottom: 30px;
@@ -931,97 +748,63 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   pointer-events: none;
 }
-
 #toast-notification.show {
   opacity: 1;
   transform: translateY(0);
 }
-/* =========================
-   SCROLL REVEAL ANIMATIONS
-========================= */
-
 .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
-/* =========================
-   SCROLL TO TOP BUTTON
-========================= */
-
 .scroll-to-top {
   position: fixed;
   bottom: 25px;
   right: 25px;
-
   width: 48px;
   height: 48px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: #111111;
   color: #ffffff;
-
   border: none;
   border-radius: 50%;
-
   font-size: 22px;
   font-weight: 700;
-
   cursor: pointer;
-
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease,
-    transform 0.3s ease,
-    background-color 0.2s ease;
-
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
   z-index: 999;
 }
-
-/* Show button */
 .scroll-to-top.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-
-/* Hover effect */
 .scroll-to-top:hover {
   background-color: #fabb13;
   color: #111111;
   transform: translateY(-3px);
 }
-/* =========================
-   SOLD OUT PRODUCTS
-========================= */
-
 .add-to-cart-btn.sold-out-btn {
   background: #d9d9d9;
   color: #777;
   cursor: not-allowed;
   opacity: 0.75;
 }
-
 .add-to-cart-btn.sold-out-btn:hover {
   background: #d9d9d9;
   color: #777;
   transform: none;
 }
-
-/* Mobile adjustment */
 @media (max-width: 600px) {
   .scroll-to-top {
     width: 44px;
@@ -1031,7 +814,6 @@ body {
     font-size: 20px;
   }
 }
-
 @media (max-width: 600px) {
   .modal-product-layout {
     grid-template-columns: 1fr;
@@ -1040,116 +822,79 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
-/* Responsive adjustments for tablets and mobile */
 @media (max-width: 992px) {
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 @media (max-width: 600px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 .shop-now-btn:hover {
   background-color: #e0a710;
   transform: translateY(-2px);
 }
-
-/* Mobile Adjustment */
 @media (max-width: 768px) {
   .hero-banner {
     height: 400px;
   }
-  
   .hero-title {
     font-size: 2.4rem;
   }
-  
   .hero-overlay {
-    background: rgba(10, 10, 10, 0.75); /* Darker overall overlay for mobile screens */
+    background: rgba(10, 10, 10, 0.75);
   }
 }
-/* ========================================
-   RESPONSIVE NAVBAR
-======================================== */
-
 @media (max-width: 768px) {
-
   .nav-container {
     padding: 12px 16px;
     gap: 12px;
   }
-
-  /* Hide desktop navigation links */
   .nav-links {
     display: none;
   }
-
-  /* Keep logo from shrinking */
   .nav-logo {
     flex-shrink: 0;
   }
-
   .logo-img {
     height: 35px;
   }
-
   .brand-name {
     font-size: 1rem;
   }
-
-  /* Keep action icons on the right */
   .nav-actions {
     margin-left: auto;
     gap: 8px;
     flex-shrink: 0;
   }
-
   .icon-btn {
     padding: 5px;
   }
 }
-/* ===================================
-   3D SNEAKER HERO SECTION
-=================================== */
-
 .hero-banner {
-  background: linear-gradient(
-    135deg,
-    #111111 0%,
-    #252525 55%,
-    #383838 100%
-  );
+  background: linear-gradient( 135deg, #111111 0%, #252525 55%, #383838 100% );
 }
-
 .hero-bg-wrapper {
   background: transparent;
 }
-
 .hero-bg-wrapper model-viewer {
   width: 100%;
   height: 100%;
   background: transparent;
 }
-/* Center the 3D sneaker hero */
-
 .hero-bg-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .hero-bg-wrapper model-viewer {
   width: 100%;
   height: 100%;
   max-width: 900px;
   margin: 0 auto;
 }
-
 .hero-content-overlay {
   position: absolute;
   inset: 0;
@@ -1159,17 +904,11 @@ body {
   padding-bottom: 35px;
   pointer-events: none;
 }
-
 .hero-content-overlay .shop-now-btn {
   pointer-events: auto;
   position: relative;
   z-index: 2;
 }
-
-/* ========================================
-   MOBILE NAVIGATION MENU
-======================================== */
-
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -1179,63 +918,45 @@ body {
   cursor: pointer;
   padding: 4px;
 }
-
 .mobile-menu {
   display: none;
 }
-
 @media (max-width: 768px) {
-
   .mobile-menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .mobile-menu {
     position: fixed;
     top: 64px;
     left: 0;
-
     width: 100%;
-
     background: #ffffff;
     border-bottom: 1px solid #eaeaea;
-
     padding: 12px 16px;
-
     flex-direction: column;
     gap: 4px;
-
     z-index: 999;
-
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   }
-
   .mobile-menu.open {
     display: flex;
   }
-
   .mobile-nav-link {
     display: block;
     width: 100%;
-
     padding: 12px 8px;
-
     color: #111111;
     text-decoration: none;
-
     font-size: 0.95rem;
     font-weight: 600;
-
     border-radius: 6px;
   }
-
   .mobile-nav-link:hover {
     background: #f5f5f5;
   }
 }
-/* Position the 3D sneaker on desktop */
 @media screen and (min-width: 769px) {
   .hero-bg-wrapper model-viewer {
     width: 65%;
@@ -1244,10 +965,6 @@ body {
     display: block;
   }
 }
-/* ===================================
-   MOBILE NAVIGATION
-=================================== */
-
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -1256,16 +973,13 @@ body {
   cursor: pointer;
   color: #111;
 }
-
 .mobile-menu {
   display: none;
 }
-
 @media (max-width: 768px) {
   .mobile-menu-btn {
     display: block;
   }
-
   .mobile-menu {
     display: none;
     flex-direction: column;
@@ -1273,11 +987,9 @@ body {
     border-top: 1px solid #eee;
     padding: 12px 20px;
   }
-
   .mobile-menu.active {
     display: flex;
   }
-
   .mobile-nav-link {
     padding: 13px 8px;
     color: #111;
@@ -1286,49 +998,36 @@ body {
     font-weight: 500;
     border-bottom: 1px solid #f1f1f1;
   }
-
   .mobile-nav-link:last-child {
     border-bottom: none;
   }
-
   .mobile-nav-link:hover {
     color: #666;
   }
 }
-/* ===================================
-   RESPONSIVE PRODUCT FILTERS
-=================================== */
-
 @media (max-width: 768px) {
   .filter-bar {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
   }
-
   .search-input-wrapper {
     width: 100%;
     min-width: 0;
     flex: none;
   }
-
   .filter-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     width: 100%;
   }
-
   .filter-pills .pill-btn {
     flex: 1 1 auto;
     min-width: 65px;
     text-align: center;
   }
 }
-/* ========================================
-   URBAN SOLE - CUSTOMER WALLET
-======================================== */
-
 #wallet-drawer {
   position: fixed;
   top: 0;
@@ -1343,18 +1042,15 @@ body {
   transition: transform 0.3s ease;
   box-shadow: -8px 0 30px rgba(0, 0, 0, 0.12);
 }
-
 #wallet-drawer.open {
   transform: translateX(0);
 }
-
 #wallet-drawer .wallet-header {
   background: #fff;
   padding: 22px 24px;
   border-bottom: 1px solid #e5e7eb;
   flex-shrink: 0;
 }
-
 #wallet-orders {
   flex: 1;
   overflow-y: auto;
@@ -1363,7 +1059,6 @@ body {
   flex-direction: column;
   gap: 16px;
 }
-
 .wallet-order-item {
   display: flex;
   flex-direction: column;
@@ -1374,25 +1069,21 @@ body {
   background: #fff;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
 }
-
 .wallet-order-item h4 {
   margin: 0;
   font-size: 16px;
   font-weight: 700;
   color: #111827;
 }
-
 .wallet-order-item p {
   margin: 0;
   font-size: 13px;
   line-height: 1.6;
   color: #475569;
 }
-
 .wallet-order-item p:last-child {
   font-weight: 600;
 }
-
 #wallet-badge {
   background: #ef4444;
   color: white;
@@ -1403,39 +1094,28 @@ body {
   padding: 2px 4px;
   text-align: center;
 }
-
 #wallet-badge[hidden] {
   display: none !important;
 }
-
 @media (max-width: 480px) {
   #wallet-drawer {
     width: 100%;
   }
-
   #wallet-orders {
     padding: 14px;
   }
-
   .wallet-order-item {
     padding: 15px;
   }
 }
-/* ========================================
-   URBAN SOLE — PREMIUM WALLET DESIGN
-======================================== */
-
 #wallet-drawer {
   background: #f8f9fb;
   width: min(460px, 100%);
 }
-
 #wallet-orders {
   padding: 20px 16px;
   gap: 18px;
 }
-
-/* Individual order cards */
 .wallet-order-item {
   background: #f1f2f4;
   border: 1px solid #e9eaed;
@@ -1444,8 +1124,6 @@ body {
   box-shadow: none;
   gap: 14px;
 }
-
-/* Order number and status */
 .wallet-order-header {
   display: flex;
   justify-content: space-between;
@@ -1454,41 +1132,33 @@ body {
   padding-bottom: 14px;
   border-bottom: 1px solid #dedfe3;
 }
-
 .wallet-order-header h4 {
   margin: 0;
   color: #171717;
   font-size: 15px;
   font-weight: 600;
 }
-
 .wallet-order-header p {
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
 }
-
-/* Shoe information */
 .wallet-shoe-details {
   padding: 12px 6px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 .wallet-shoe-details p:first-child {
   font-size: 14px;
   font-weight: 500;
   color: #171717;
 }
-
 .wallet-shoe-details p:last-child {
   font-size: 15px;
   font-weight: 700;
   color: #111827;
 }
-
-/* Shoe removal notification */
 .wallet-order-item > p {
   background: #fff;
   padding: 14px;
@@ -1500,41 +1170,31 @@ body {
   margin: 0 !important;
   font-weight: 400 !important;
 }
-
-/* Scrollbar */
 #wallet-orders::-webkit-scrollbar {
   width: 5px;
 }
-
 #wallet-orders::-webkit-scrollbar-thumb {
   background: #d1d5db;
   border-radius: 10px;
 }
-
-/* Mobile */
 @media (max-width: 480px) {
   #wallet-drawer {
     width: 100%;
   }
-
   #wallet-orders {
     padding: 14px 12px;
   }
-
   .wallet-order-item {
     padding: 14px;
     border-radius: 14px;
   }
 }
-/* Shoe icon and product information */
-
 .wallet-shoe-details {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
 }
-
 .wallet-shoe-icon {
   width: 64px;
   height: 64px;
@@ -1546,18 +1206,14 @@ body {
   border-radius: 12px;
   font-size: 30px;
 }
-
 .wallet-shoe-info {
   flex: 1;
   min-width: 0;
 }
-
 .wallet-shoe-info p {
   margin: 0 0 5px;
   overflow-wrap: anywhere;
 }
-/* Wallet background overlay */
-
 #wallet-overlay {
   position: fixed;
   inset: 0;
@@ -1568,20 +1224,14 @@ body {
   pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
 #wallet-overlay.active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
-
 #wallet-drawer {
   z-index: 2000;
 }
-/* ========================================
-   URBAN SOLE — LETTER DROP ANIMATION
-======================================== */
-
 .hero-brand-name {
   display: flex;
   justify-content: center;
@@ -1590,47 +1240,34 @@ body {
   gap: 2px;
   white-space: nowrap;
 }
-
 .hero-brand-name span:not(.brand-space) {
   display: inline-block;
   opacity: 0;
   transform: translateY(-90px) rotate(-12deg);
-
-  animation: letterDrop 0.85s
-    cubic-bezier(0.22, 1, 0.36, 1)
-    forwards;
-
+  animation: letterDrop 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: calc(var(--i) * 0.13s);
 }
-
 .hero-brand-name .brand-space {
   width: 0.35em;
   flex-shrink: 0;
 }
-
-/* Each letter drops and settles */
 @keyframes letterDrop {
   0% {
     opacity: 0;
     transform: translateY(-90px) rotate(-12deg);
   }
-
   65% {
     opacity: 1;
     transform: translateY(8px) rotate(3deg);
   }
-
   82% {
     transform: translateY(-5px) rotate(-2deg);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0) rotate(0deg);
   }
 }
-
-/* Mobile responsiveness */
 @media (max-width: 480px) {
   .hero-brand-name {
     font-size: clamp(24px, 7vw, 36px);
@@ -1638,8 +1275,6 @@ body {
     gap: 1px;
   }
 }
-
-/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .hero-brand-name span:not(.brand-space) {
     animation: none;
@@ -1647,25 +1282,20 @@ body {
     transform: none;
   }
 }
-
-/* MOBILE 3D SNEAKER HERO FIX */
 @media (max-width: 768px) {
   .hero-banner {
     height: 350px;
     position: relative;
   }
-
   .hero-bg-wrapper {
     width: 100%;
     height: 100%;
   }
-
   .hero-bg-wrapper model-viewer {
     width: 100%;
     height: 100%;
     max-width: none;
   }
-
   .hero-content-overlay {
     position: absolute;
     inset: 0;
@@ -1680,24 +1310,18 @@ body {
     gap: 12px;
     text-align: center;
   }
-
   .hero-brand-name {
     font-size: clamp(22px, 6vw, 32px);
     letter-spacing: 1px;
-
-
     margin: 0;
     max-width: 100%;
     white-space: nowrap;
   }
-
   .shop-now-btn {
     font-size: 13px;
     padding: 11px 22px;
   }
 }
-
-/* MOBILE SHOPPING CART */
 @media (max-width: 600px) {
   .cart-drawer {
     width: calc(100% - 32px);
@@ -1710,19 +1334,15 @@ body {
     transform: translateY(-50%) translateX(calc(100% + 32px));
     overflow: hidden;
   }
-
   .cart-drawer.open {
     right: 16px;
     transform: translateY(-50%) translateX(0);
   }
-
   .cart-items {
     min-height: 0;
     overflow-y: auto;
   }
 }
-
-/* MOBILE MY PAYMENTS PANEL */
 @media (max-width: 600px) {
   #wallet-drawer {
     width: calc(100% - 32px);
@@ -1735,32 +1355,19 @@ body {
     transform: translateY(-50%) translateX(calc(100% + 32px));
     overflow: hidden;
   }
-
   #wallet-drawer.open {
     transform: translateY(-50%) translateX(0);
   }
-
   #wallet-orders {
     min-height: 0;
     overflow-y: auto;
   }
 }
-
-/* URBAN SOLE — DARK STUDIO HERO */
 .hero-banner {
   position: relative;
-  background:
-    radial-gradient(
-      ellipse at 50% 60%,
-      #252a2e 0%,
-      #101316 40%,
-      #030405 80%,
-      #000000 100%
-    );
+  background: radial-gradient( ellipse at 50% 60%, #252a2e 0%, #101316 40%, #030405 80%, #000000 100% );
   overflow: hidden;
 }
-
-/* Cinematic overhead spotlight */
 .hero-banner::before {
   content: "";
   position: absolute;
@@ -1768,49 +1375,27 @@ body {
   left: calc(24% - 65px);
   width: 50%;
   height: 110%;
-
-  background: linear-gradient(
-    180deg,
-    rgba(220, 235, 255, 0.26) 0%,
-    rgba(180, 210, 245, 0.10) 40%,
-    transparent 85%
-  );
-
+  background: linear-gradient( 180deg, rgba(220, 235, 255, 0.26) 0%, rgba(180, 210, 245, 0.10) 40%, transparent 85% );
   clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
   filter: blur(22px);
   opacity: 0.8;
   pointer-events: none;
   z-index: 0;
 }
-
-/* Realistic floating sneaker shadow */
 .hero-bg-wrapper::after {
   content: "";
   position: absolute;
-
   width: 330px;
   height: 45px;
-
   left: calc(37% - 65px);
   bottom: 13%;
-
- background: radial-gradient(
-  ellipse,
-  rgba(0, 0, 0, 0.95) 0%,
-  rgba(0, 0, 0, 0.6) 30%,
-  rgba(125, 135, 145, 0.18) 65%,
-  transparent 100%
-);
-
+  background: radial-gradient( ellipse, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(125, 135, 145, 0.18) 65%, transparent 100% );
   border-radius: 50%;
   filter: blur(12px);
   transform: rotate(-5deg);
-
   pointer-events: none;
   z-index: 0;
 }
-
-/* URBAN SOLE — PREMIUM HERO TYPOGRAPHY */
 .hero-content-overlay {
   align-items: flex-end;
   justify-content: center;
@@ -1818,21 +1403,16 @@ body {
   padding-bottom: 0;
   gap: 24px;
 }
-
 .hero-brand-name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: clamp(32px, 3.6vw, 54px);
   font-weight: 900;
   letter-spacing: 2px;
   line-height: 1.05;
   white-space: nowrap;
-
   color: #f4f4f2;
-  text-shadow:
-    0 2px 8px rgba(255, 255, 255, 0.08),
-    0 12px 30px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.08), 0 12px 30px rgba(0, 0, 0, 0.5);
 }
-
 .hero-content-overlay .shop-now-btn {
   background: #d9ae54;
   color: #101010;
@@ -1844,38 +1424,20 @@ body {
   text-transform: uppercase;
   transition: background 0.3s ease, transform 0.3s ease;
 }
-
 .hero-content-overlay .shop-now-btn:hover {
   background: #f2cc7c;
   transform: translateY(-3px);
 }
-
-/* Move rotating sneaker slightly left */
 @media (min-width: 769px) {
   .hero-bg-wrapper model-viewer {
     position: relative;
     left: -65px;
   }
 }
-
-/* =====================================
-   URBAN SOLE — PREMIUM PRODUCT SECTION
-===================================== */
-
 .featured-section {
   padding: 85px 0 75px;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0px,
-      transparent 210px,
-      rgba(210, 198, 187, 0.12) 210px,
-      rgba(210, 198, 187, 0.12) 350px
-    ),
-    #f8f4f0;
+  background: repeating-linear-gradient( 135deg, transparent 0px, transparent 210px, rgba(210, 198, 187, 0.12) 210px, rgba(210, 198, 187, 0.12) 350px ), #f8f4f0;
 }
-
-/* Premium section heading */
 .featured-section .section-header {
   display: flex;
   flex-direction: column;
@@ -1884,13 +1446,11 @@ body {
   gap: 10px;
   margin-bottom: 48px;
 }
-
 .featured-crown {
   font-size: 42px;
   color: #ffb900;
   line-height: 1;
 }
-
 .featured-section .section-title {
   font-size: clamp(30px, 4vw, 54px);
   font-weight: 900;
@@ -1898,14 +1458,12 @@ body {
   letter-spacing: -2px;
   color: #0d0d0d;
 }
-
 .featured-subtitle {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 3px;
   color: #171717;
 }
-
 .featured-accent {
   display: block;
   width: 150px;
@@ -1915,15 +1473,11 @@ body {
   transform: rotate(-3deg);
   margin-top: 8px;
 }
-
-/* Four products per row */
 .featured-section .product-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 25px;
 }
-
-/* Premium product cards */
 .featured-section .product-card {
   background: #fffdfb;
   border-radius: 22px;
@@ -1932,74 +1486,52 @@ body {
   box-shadow: 0 12px 28px rgba(35, 25, 15, 0.09);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .featured-section .product-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 20px 38px rgba(35, 25, 15, 0.15);
 }
-
-/* Sneaker image area */
 .featured-section .card-image-wrapper {
   height: 205px;
-  background:
-    linear-gradient(
-      135deg,
-      #faf7f4 0%,
-      #faf7f4 76%,
-      #ffbd00 76%,
-      #ffbd00 100%
-    );
+  background: linear-gradient( 135deg, #faf7f4 0%, #faf7f4 76%, #ffbd00 76%, #ffbd00 100% );
   border-radius: 0;
 }
-
 .featured-section .card-image-wrapper img {
   max-width: 95%;
   max-height: 95%;
   object-fit: contain;
 }
-
-/* Product details */
 .featured-section .card-info {
   padding: 16px 18px 20px;
 }
-
 .featured-section .product-name {
   font-size: 17px;
   font-weight: 800;
   color: #111;
 }
-
-/* Search and filters below products */
 .featured-section .filter-bar {
   margin-top: 42px;
   margin-bottom: 0;
   justify-content: center;
   gap: 14px;
 }
-
 .featured-section .search-input-wrapper {
   flex: 1;
   min-width: 200px;
 }
-
 .featured-section .search-input-wrapper input {
   border-radius: 30px;
   padding: 14px 18px;
   background: #fff;
   border: 2px solid #e4ded8;
 }
-
 .featured-section .pill-btn {
   border-radius: 30px;
   padding: 12px 17px;
 }
-
 .featured-section .pill-btn.active {
   background: #111;
   color: #fff;
 }
-
-/* View All Products */
 .view-all-products-btn {
   background: #fff8e7;
   border: 3px solid #ffb900;
@@ -2012,130 +1544,98 @@ body {
   cursor: pointer;
   transition: 0.3s ease;
 }
-
 .view-all-products-btn:hover {
   background: #ffb900;
   transform: translateY(-3px);
 }
-
-/* Responsive layout */
 @media (max-width: 1000px) {
   .featured-section .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
 @media (max-width: 600px) {
   .featured-section {
     padding: 55px 0;
   }
-
   .featured-section .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
-
   .featured-section .section-title {
     font-size: 30px;
   }
-
   .featured-subtitle {
     font-size: 10px;
     letter-spacing: 1.5px;
   }
-
   .featured-section .card-image-wrapper {
     height: 145px;
   }
-
   .featured-section .card-info {
     padding: 12px;
   }
-
   .featured-section .product-name {
     font-size: 13px;
   }
-
   .featured-section .filter-bar {
     flex-direction: column;
     align-items: stretch;
   }
-
   .featured-section .search-input-wrapper {
     min-width: 0;
     width: 100%;
   }
-
   .featured-section .filter-pills {
     justify-content: center;
     flex-wrap: wrap;
   }
 }
-
-/* =====================================
-   URBAN SOLE — PREMIUM PRODUCT CARDS
-===================================== */
-
-/* Product card details */
 .featured-section .card-info {
   padding: 14px 18px 18px;
 }
-
 .featured-section .product-name {
   font-size: 17px;
   font-weight: 800;
   color: #111;
   margin-bottom: 5px;
 }
-
 .featured-section .product-brand {
   font-size: 13px;
   color: #666;
   margin-bottom: 10px;
 }
-
-/* Price and cart button on the same row */
 .product-card-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
-
 .product-card-price {
   font-size: 19px;
   font-weight: 900;
   color: #111;
 }
-
-/* Small golden cart button */
 .featured-section .add-to-cart-btn {
   width: 46px;
   height: 40px;
   margin: 0;
   padding: 0;
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: #ffbd00;
   color: #111;
   border: none;
   border-radius: 12px;
-
   font-size: 20px;
   cursor: pointer;
   transition: transform 0.25s ease, background 0.25s ease;
 }
-
 .featured-section .add-to-cart-btn:hover {
   background: #e6a900;
   transform: translateY(-3px);
 }
-
-/* Rounded product badges */
 .featured-section .badge {
   top: 14px;
   left: 14px;
@@ -2144,25 +1644,19 @@ body {
   font-size: 12px;
   text-transform: none;
 }
-
-/* Mobile adjustments */
 @media (max-width: 600px) {
   .featured-section .card-info {
     padding: 12px;
   }
-
   .featured-section .product-name {
     font-size: 13px;
   }
-
   .featured-section .product-brand {
     font-size: 11px;
   }
-
   .product-card-price {
     font-size: 15px;
   }
-
   .featured-section .add-to-cart-btn {
     width: 36px;
     height: 36px;
@@ -2170,109 +1664,63 @@ body {
     border-radius: 10px;
   }
 }
-
-
 .view-all-products-btn[hidden] {
   display: none !important;
 }
-
-/* Compact Featured Sneakers heading */
 .featured-section {
   padding-top: 42px;
 }
-
 .featured-section .section-header {
   gap: 6px;
   margin-bottom: 28px;
 }
-
 .featured-section .featured-crown {
   font-size: 27px;
 }
-
 .featured-section .section-title {
   font-size: clamp(24px, 2.8vw, 38px);
   letter-spacing: -1px;
   line-height: 1.1;
 }
-
 .featured-section .featured-subtitle {
   font-size: 11px;
   letter-spacing: 2px;
 }
-
 .featured-section .featured-accent {
   width: 110px;
   height: 4px;
   margin-top: 5px;
 }
-
 @media (max-width: 600px) {
   .featured-section {
     padding-top: 30px;
   }
-
   .featured-section .section-header {
     margin-bottom: 22px;
   }
-
   .featured-section .section-title {
     font-size: 24px;
   }
-
   .featured-section .featured-subtitle {
     font-size: 9px;
     letter-spacing: 1px;
   }
 }
-
-/* URBAN SOLE — CREAM & GOLD HERO */
 .hero-banner {
-  background:
-    linear-gradient(
-      135deg,
-      transparent 0%,
-      transparent 72%,
-      #ffbd00 72%,
-      #ffbd00 100%
-    ),
-    repeating-linear-gradient(
-      135deg,
-      #faf7f3 0px,
-      #faf7f3 180px,
-      #f0eae4 180px,
-      #f0eae4 340px
-    );
+  background: linear-gradient( 135deg, transparent 0%, transparent 72%, #ffbd00 72%, #ffbd00 100% ), repeating-linear-gradient( 135deg, #faf7f3 0px, #faf7f3 180px, #f0eae4 180px, #f0eae4 340px );
 }
-
-/* Warm lighting behind the rotating shoe */
 .hero-banner::before {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 196, 70, 0.25),
-    transparent 70%
-  );
+  background: radial-gradient( ellipse at center, rgba(255, 196, 70, 0.25), transparent 70% );
   clip-path: none;
   filter: blur(35px);
 }
-
-/* Softer floor shadow */
 .hero-bg-wrapper::after {
-  background: radial-gradient(
-    ellipse,
-    rgba(30, 22, 15, 0.45) 0%,
-    rgba(80, 55, 25, 0.15) 50%,
-    transparent 80%
-  );
+  background: radial-gradient( ellipse, rgba(30, 22, 15, 0.45) 0%, rgba(80, 55, 25, 0.15) 50%, transparent 80% );
 }
-
-/* Dark lettering on cream background */
 .hero-brand-name {
   color: #111;
   text-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
 }
-
-/* URBAN SOLE — LEFT BRANDING, RIGHT SNEAKER */
 @media (min-width: 769px) {
   .hero-content-overlay {
     left: 5%;
@@ -2283,7 +1731,6 @@ body {
     text-align: center;
     z-index: 5;
   }
-
   .hero-brand-name {
     font-size: clamp(48px, 5vw, 76px);
     line-height: 1.05;
@@ -2291,21 +1738,16 @@ body {
     white-space: normal;
     text-align: center;
   }
-
   .hero-bg-wrapper model-viewer {
     left: 23%;
   }
-
   .hero-banner::before {
     left: 48%;
   }
-
   .hero-bg-wrapper::after {
     left: 65%;
   }
 }
-
-/* Premium stacked hero heading */
 @media (min-width: 769px) {
   .hero-brand-name {
     max-width: 420px;
@@ -2319,29 +1761,23 @@ body {
     white-space: normal;
   }
 }
-
-/* Stack URBAN and SOLE */
 .hero-brand-name {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
 }
-
 .hero-word {
   display: block;
   white-space: nowrap;
   line-height: 0.95;
 }
-
-/* FIX HERO BRANDING */
 .hero-content-overlay .hero-crown {
   display: block;
   font-size: 48px;
   color: #ffbd00 !important;
   line-height: 1;
 }
-
 .hero-content-overlay .hero-gold-line {
   display: block;
   width: 75%;
@@ -2352,7 +1788,6 @@ body {
   transform: rotate(-3deg);
   margin: 8px auto;
 }
-
 .hero-content-overlay .hero-tagline {
   color: #111 !important;
   font-size: 23px;
@@ -2360,7 +1795,6 @@ body {
   font-style: italic;
   margin: 0;
 }
-
 .hero-content-overlay .hero-description {
   color: #222 !important;
   font-size: 12px;
@@ -2368,11 +1802,9 @@ body {
   letter-spacing: 2px;
   margin: 0;
 }
-
 .hero-content-overlay .hero-description span {
   color: #ffbd00;
 }
-
 .hero-content-overlay .shop-now-btn {
   background: #ffbd00;
   color: #111;
@@ -2380,56 +1812,39 @@ body {
   padding: 15px 35px;
   margin-top: 10px;
 }
-
-/* Keep all branding elements neatly grouped */
 @media (min-width: 769px) {
   .hero-content-overlay {
     gap: 10px;
   }
 }
-
-/* Reduce gap between hero and featured products */
 .featured-section {
   padding-top: 20px;
 }
-
 .featured-section .section-header {
   margin-bottom: 22px;
   gap: 5px;
 }
-
 .featured-section .featured-crown {
   font-size: 25px;
 }
-
 .featured-section .section-title {
   font-size: clamp(24px, 2.6vw, 36px);
 }
-
 @media (max-width: 600px) {
   .featured-section {
     padding-top: 18px;
   }
-
   .featured-section .section-header {
     margin-bottom: 18px;
   }
 }
-
-/* =========================================
-   URBAN SOLE — MOBILE HERO FIX
-========================================= */
-
 @media (max-width: 768px) {
-
   .hero-banner {
     height: 650px;
     min-height: 650px;
     position: relative;
     overflow: hidden;
   }
-
-  /* Branding at the top */
   .hero-content-overlay {
     position: absolute;
     top: 22px;
@@ -2449,12 +1864,10 @@ body {
     z-index: 5;
     transform: none;
   }
-
   .hero-content-overlay .hero-crown {
     font-size: 30px;
     margin: 0;
   }
-
   .hero-brand-name {
     font-size: 43px;
     line-height: 0.9;
@@ -2462,35 +1875,28 @@ body {
     margin: 0;
     max-width: 100%;
   }
-
   .hero-word {
     line-height: 0.95;
   }
-
   .hero-content-overlay .hero-gold-line {
     width: 155px;
     height: 4px;
     margin: 8px auto;
   }
-
   .hero-content-overlay .hero-tagline {
     font-size: 17px;
     margin: 0;
   }
-
   .hero-content-overlay .hero-description {
     font-size: 9px;
     letter-spacing: 1px;
     white-space: normal;
   }
-
   .hero-content-overlay .shop-now-btn {
     margin-top: 8px;
     padding: 12px 28px;
     font-size: 11px;
   }
-
-  /* Position rotating sneaker below branding */
   .hero-bg-wrapper {
     position: absolute;
     inset: 0;
@@ -2499,7 +1905,6 @@ body {
     overflow: hidden;
     pointer-events: none;
   }
-
   .hero-bg-wrapper model-viewer {
     position: absolute;
     top: 265px;
@@ -2508,16 +1913,12 @@ body {
     height: 340px !important;
     pointer-events: none;
   }
-
-  /* Move spotlight behind sneaker */
   .hero-banner::before {
     top: 270px;
     left: 10%;
     width: 80%;
     height: 280px;
   }
-
-  /* Move floor shadow beneath sneaker */
   .hero-bg-wrapper::after {
     top: auto;
     bottom: 35px;
@@ -2526,56 +1927,40 @@ body {
     height: 50px;
   }
 }
-
-/* COMPACT MOBILE HERO */
 @media (max-width: 768px) {
-
   .hero-banner {
     height: 510px;
     min-height: 510px;
   }
-
   .hero-content-overlay {
     top: 12px;
     gap: 3px;
   }
-
   .hero-brand-name {
     font-size: 37px;
   }
-
   .hero-content-overlay .hero-gold-line {
     margin: 4px auto;
   }
-
   .hero-content-overlay .shop-now-btn {
     margin-top: 4px;
   }
-
   .hero-bg-wrapper model-viewer {
     top: 210px;
     height: 270px !important;
   }
-
   .hero-banner::before {
     top: 210px;
     height: 240px;
   }
-
   .hero-bg-wrapper::after {
     bottom: 15px;
   }
 }
-
-/* =========================================
-   URBAN SOLE — PREMIUM SHOPPING CART
-========================================= */
-
 #cart-overlay.open {
   background: rgba(12, 10, 8, 0.55);
   backdrop-filter: blur(5px);
 }
-
 #cart-drawer {
   width: min(440px, 100%);
   max-width: 440px;
@@ -2587,24 +1972,20 @@ body {
   transform: translateX(105%);
   transition: transform 0.35s ease;
 }
-
 #cart-drawer.open {
   transform: translateX(0);
 }
-
 #cart-drawer .cart-header {
   padding: 26px 24px;
   background: #fffdf9;
   border-bottom: 1px solid #eadfce;
 }
-
 #cart-drawer .cart-header h3 {
   font-size: 19px;
   font-weight: 800;
   color: #111;
   letter-spacing: -0.4px;
 }
-
 #cart-drawer .close-cart-btn {
   width: 36px;
   height: 36px;
@@ -2616,15 +1997,12 @@ body {
   place-items: center;
   transition: background 0.2s ease;
 }
-
 #cart-drawer .close-cart-btn:hover {
   background: #ffbf00;
 }
-
 #cart-drawer .cart-items {
   padding: 22px 18px;
 }
-
 #cart-drawer .cart-item-row {
   background: #fff;
   border: 1px solid #eee3d5;
@@ -2634,48 +2012,40 @@ body {
   gap: 12px;
   box-shadow: 0 5px 18px rgba(30, 20, 10, 0.04);
 }
-
 #cart-drawer .cart-item-info {
   flex: 1;
   min-width: 0;
 }
-
 #cart-drawer .cart-item-info h4 {
   font-size: 15px;
   font-weight: 800;
   color: #111;
   margin-bottom: 8px;
 }
-
 #cart-drawer .cart-item-info p {
   color: #71685e;
   font-size: 13px;
   line-height: 1.6;
 }
-
 #cart-drawer .cart-item-remove {
   color: #a33b32;
   font-weight: 600;
   cursor: pointer;
 }
-
 #cart-drawer .cart-footer {
   margin-top: auto;
   padding: 24px;
   background: #fffdf9;
   border-top: 1px solid #eadfce;
 }
-
 #cart-drawer .cart-subtotal {
   font-size: 17px;
   margin-bottom: 18px;
   color: #111;
 }
-
 #cart-drawer #cart-subtotal-price {
   font-weight: 900;
 }
-
 #cart-drawer .checkout-btn {
   min-height: 52px;
   background: #111;
@@ -2683,48 +2053,36 @@ body {
   border-radius: 12px;
   font-size: 14px;
   font-weight: 800;
-  transition: background 0.2s ease,
-              transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
-
 #cart-drawer .checkout-btn:hover {
   background: #d9a529;
   color: #111;
   transform: translateY(-2px);
 }
-
 @media (max-width: 480px) {
   #cart-drawer {
     width: 100%;
     max-width: 100%;
   }
-
-  #cart-drawer .cart-header,
-  #cart-drawer .cart-footer {
+  #cart-drawer .cart-header, #cart-drawer .cart-footer {
     padding: 20px;
   }
 }
-
-/* URBAN SOLE — CART DETAIL REFINEMENT */
-
 #cart-drawer .cart-item-row {
   align-items: flex-start;
   padding: 20px 18px;
   min-height: 135px;
 }
-
 #cart-drawer .cart-item-info h4 {
   font-size: 17px;
   margin-bottom: 10px;
   text-transform: capitalize;
 }
-
 #cart-drawer .cart-item-info p {
   font-size: 14px;
   margin-bottom: 10px;
 }
-
-/* Quantity buttons */
 #cart-drawer .cart-item-info button:not(.cart-item-remove) {
   min-width: 30px;
   min-height: 30px;
@@ -2738,23 +2096,18 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 #cart-drawer .cart-item-info button:not(.cart-item-remove):hover {
   background: #ffbf00;
   border-color: #ffbf00;
 }
-
 #cart-drawer .cart-item-remove {
   font-size: 12px;
   padding: 5px;
   border-radius: 6px;
 }
-
 #cart-drawer .cart-item-remove:hover {
   background: #fff0ee;
 }
-
-/* Center the shopping cart close icon */
 #cart-drawer .close-cart-btn {
   display: flex;
   align-items: center;
@@ -2767,48 +2120,30 @@ body {
   text-align: center;
   flex-shrink: 0;
 }
-
-/* =========================================
-   URBAN SOLE — GLASS NAVBAR
-========================================= */
-
 html body header.navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-
   background: rgba(255, 252, 247, 0.62) !important;
-
   backdrop-filter: blur(20px) saturate(170%);
   -webkit-backdrop-filter: blur(20px) saturate(170%);
-
   border-bottom: 1px solid rgba(212, 170, 75, 0.35);
-
   box-shadow: 0 6px 28px rgba(0, 0, 0, 0.07);
 }
-
-/* Prevent the inner container from covering the glass */
 html body .navbar .nav-container {
   background: transparent !important;
 }
-
-/* Premium navigation links */
 .navbar .nav-link {
   color: #171717;
   font-weight: 600;
   transition: color 0.25s ease;
 }
-
 .navbar .nav-link:hover {
   color: #c18d21;
 }
-
-/* Icon hover effects */
 .navbar .icon-btn:hover {
   color: #c18d21;
 }
-
-/* Mobile glass navbar */
 @media (max-width: 768px) {
   html body header.navbar {
     background: rgba(255, 252, 247, 0.75) !important;
@@ -2816,65 +2151,42 @@ html body .navbar .nav-container {
     -webkit-backdrop-filter: blur(16px) saturate(160%);
   }
 }
-
-/* =========================================
-   URBAN SOLE — PREMIUM MOBILE MENU
-========================================= */
-
 @media (max-width: 768px) {
-
-  /* Glass dropdown */
   .navbar .mobile-menu {
     background: rgba(255, 252, 247, 0.94);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-
     border: 1px solid rgba(212, 170, 75, 0.25);
     border-top: none;
     border-radius: 0 0 18px 18px;
-
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-
     padding: 10px 12px 14px;
     max-height: calc(100dvh - 80px);
     overflow-y: auto;
   }
-
-  /* Compact menu links */
   .navbar .mobile-nav-link {
     display: flex;
     align-items: center;
-
     min-height: 44px;
     padding: 12px 16px;
     margin: 2px 0;
-
     border-radius: 10px;
     background: transparent;
-
     color: #171717;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-
-    transition:
-      background 0.2s ease,
-      color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
   }
-
-  .navbar .mobile-nav-link:hover,
-  .navbar .mobile-nav-link:focus-visible {
+  .navbar .mobile-nav-link:hover, .navbar .mobile-nav-link:focus-visible {
     background: rgba(255, 191, 0, 0.13);
     color: #9a6b00;
   }
-
   .navbar .mobile-nav-link.active {
     background: rgba(255, 191, 0, 0.17);
     color: #111;
     border-left: 3px solid #ffbf00;
   }
-
-  /* Hamburger / close button */
   .navbar .mobile-menu-btn {
     width: 36px;
     height: 36px;
@@ -2882,7 +2194,6 @@ html body .navbar .nav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: transparent;
     border: none;
     color: #111;
@@ -2890,16 +2201,10 @@ html body .navbar .nav-container {
     line-height: 1;
     cursor: pointer;
   }
-
   .navbar .mobile-menu-btn:hover {
     color: #c18d21;
   }
 }
-
-/* =========================================
-   URBAN SOLE — PREMIUM CHECKOUT MODAL
-========================================= */
-
 #checkout-modal-overlay {
   background: rgba(12, 12, 12, 0.65);
   backdrop-filter: blur(7px);
@@ -2907,7 +2212,6 @@ html body .navbar .nav-container {
   padding: 20px;
   overflow-y: auto;
 }
-
 #checkout-modal-overlay .checkout-box {
   position: relative;
   width: 100%;
@@ -2922,8 +2226,6 @@ html body .navbar .nav-container {
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
 }
-
-/* Close button */
 #checkout-modal-overlay .modal-close {
   position: absolute;
   top: 16px;
@@ -2942,17 +2244,13 @@ html body .navbar .nav-container {
   cursor: pointer;
   transition: background 0.2s ease;
 }
-
 #checkout-modal-overlay .modal-close:hover {
   background: #ffbd00;
 }
-
-/* Checkout heading */
 .checkout-heading {
   text-align: center;
   margin-bottom: 25px;
 }
-
 .checkout-crown {
   display: block;
   color: #ffb900;
@@ -2960,43 +2258,35 @@ html body .navbar .nav-container {
   line-height: 1;
   margin-bottom: 12px;
 }
-
 .checkout-heading h2 {
   color: #111;
   font-size: 26px;
   font-weight: 800;
   margin: 0 0 10px;
 }
-
 .checkout-heading .checkout-description {
   color: #777;
   font-size: 13px;
   line-height: 1.6;
   margin: 0;
 }
-
-/* Form */
 #checkout-form {
   display: flex;
   flex-direction: column;
   gap: 17px;
 }
-
 #checkout-form .form-group {
   display: flex;
   flex-direction: column;
   gap: 7px;
   margin: 0;
 }
-
 #checkout-form label {
   font-size: 13px;
   font-weight: 600;
   color: #222;
 }
-
-#checkout-form input,
-#checkout-form textarea {
+#checkout-form input, #checkout-form textarea {
   width: 100%;
   padding: 13px 14px;
   border: 1px solid #e8dfd4;
@@ -3009,19 +2299,14 @@ html body .navbar .nav-container {
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-
-#checkout-form input:focus,
-#checkout-form textarea:focus {
+#checkout-form input:focus, #checkout-form textarea:focus {
   border-color: #ffbd00;
   box-shadow: 0 0 0 3px rgba(255, 189, 0, 0.12);
 }
-
 #checkout-form textarea {
   resize: vertical;
   min-height: 85px;
 }
-
-/* Total */
 .checkout-summary {
   display: flex;
   justify-content: space-between;
@@ -3032,18 +2317,14 @@ html body .navbar .nav-container {
   background: #f5efe6;
   color: #111;
 }
-
 .checkout-summary span {
   font-size: 14px;
   font-weight: 600;
 }
-
 .checkout-summary strong {
   font-size: 21px;
   font-weight: 800;
 }
-
-/* WhatsApp checkout button */
 #checkout-form .whatsapp-checkout-btn {
   width: 100%;
   padding: 16px;
@@ -3056,141 +2337,103 @@ html body .navbar .nav-container {
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
-
 #checkout-form .whatsapp-checkout-btn:hover {
   background: #e8aa00;
   transform: translateY(-2px);
 }
-
 .checkout-note {
   text-align: center;
   font-size: 11px;
   color: #888;
   margin: 0;
 }
-
-/* Mobile */
 @media (max-width: 480px) {
   #checkout-modal-overlay {
     padding: 12px;
   }
-
   #checkout-modal-overlay .checkout-box {
     max-height: calc(100dvh - 24px);
     padding: 28px 20px 22px;
     border-radius: 17px;
   }
-
   .checkout-heading h2 {
     font-size: 22px;
   }
-
   .checkout-heading {
     padding-top: 12px;
     margin-bottom: 18px;
   }
-
   #checkout-form {
     gap: 13px;
   }
-
   .checkout-summary strong {
     font-size: 18px;
   }
 }
-
-
-/* =====================================
-   URBAN SOLE — MOBILE CART FIX
-===================================== */
-
 @media (max-width: 768px) {
-
-  /* Keep cart within the visible screen */
   .cart-sidebar {
     position: fixed !important;
     top: auto !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-
     width: 100% !important;
     max-width: 100% !important;
     height: min(85dvh, 700px) !important;
     max-height: 85dvh !important;
-
     display: flex !important;
     flex-direction: column !important;
-
     border-radius: 18px 18px 0 0;
     overflow: hidden !important;
     box-sizing: border-box;
   }
-
-  /* Product list scrolls independently */
   .cart-items {
     flex: 1 1 auto !important;
     min-height: 0 !important;
     overflow-y: auto !important;
     overscroll-behavior: contain;
   }
-
-  /* Keep checkout button visible */
   .cart-footer {
     position: relative !important;
     flex: 0 0 auto !important;
     bottom: auto !important;
-
     width: 100%;
     padding: 16px 20px calc(18px + env(safe-area-inset-bottom));
     background: #fffdf9;
     box-sizing: border-box;
   }
-
   .cart-footer button {
     display: block;
     width: 100%;
     min-height: 48px;
   }
 }
-
-/* ======================================
-   URBAN SOLE — MOBILE CART LAYOUT FIX
-====================================== */
-
 @media (max-width: 768px) {
-
   #cart-drawer {
     position: fixed !important;
     top: auto !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-
     width: 100% !important;
     max-width: 100% !important;
     height: 85dvh !important;
     max-height: 85dvh !important;
-
     display: flex !important;
     flex-direction: column !important;
-
     border-radius: 18px 18px 0 0;
     overflow: hidden !important;
     box-sizing: border-box;
   }
-
   #cart-drawer .cart-header {
     flex: 0 0 auto !important;
   }
-
   #cart-drawer .cart-items {
     flex: 1 1 0 !important;
     min-height: 0 !important;
     overflow-y: auto !important;
     padding-bottom: 12px;
   }
-
   #cart-drawer .cart-footer {
     position: relative !important;
     inset: auto !important;
@@ -3202,39 +2445,27 @@ html body .navbar .nav-container {
     box-sizing: border-box;
     z-index: 2;
   }
-
   #cart-drawer .cart-subtotal {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
   }
-
   #cart-drawer #open-checkout-btn {
     display: block !important;
     width: 100% !important;
     min-height: 46px;
   }
 }
-
-/* =========================================
-   URBAN SOLE — MY PAYMENTS UI REFINEMENT
-========================================= */
-
-/* Main payments panel */
 #wallet-drawer {
   background: #faf7f2;
   overflow: hidden;
 }
-
-/* Header */
 #wallet-drawer .wallet-header {
   background: #ffffff;
   padding: 22px 24px;
   border-bottom: 1px solid #eee3d3;
 }
-
-/* Order history scrolling */
 #wallet-orders {
   flex: 1;
   min-height: 0;
@@ -3245,8 +2476,6 @@ html body .navbar .nav-container {
   scrollbar-width: thin;
   scrollbar-color: #d7c8ae transparent;
 }
-
-/* Individual order cards */
 #wallet-drawer .wallet-order-item {
   background: #ffffff;
   border: 1px solid #eee4d6;
@@ -3255,8 +2484,6 @@ html body .navbar .nav-container {
   gap: 14px;
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.035);
 }
-
-/* Order number and payment status */
 #wallet-drawer .wallet-order-header {
   display: flex;
   align-items: center;
@@ -3265,14 +2492,11 @@ html body .navbar .nav-container {
   padding-bottom: 14px;
   border-bottom: 1px solid #f0ebe4;
 }
-
 #wallet-drawer .wallet-order-header h4 {
   font-size: 15px;
   font-weight: 800;
   color: #111111;
 }
-
-/* Payment status */
 #wallet-drawer .wallet-order-header p {
   background: #fff2d5;
   color: #a66300;
@@ -3282,8 +2506,6 @@ html body .navbar .nav-container {
   font-weight: 700;
   white-space: nowrap;
 }
-
-/* Shoe details */
 #wallet-drawer .wallet-shoe-details {
   display: flex;
   flex-direction: row;
@@ -3291,25 +2513,20 @@ html body .navbar .nav-container {
   gap: 14px;
   padding: 6px 0;
 }
-
 #wallet-drawer .wallet-shoe-icon {
   width: 60px;
   height: 60px;
   border-radius: 12px;
   background: #f6f1e9;
 }
-
 #wallet-drawer .wallet-shoe-info {
   flex: 1;
   min-width: 0;
 }
-
 #wallet-drawer .wallet-shoe-info p {
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
-
-/* Product unavailable warning */
 #wallet-drawer .wallet-order-item > p {
   background: #fff8f5;
   border: 1px solid #f8e5de;
@@ -3321,19 +2538,14 @@ html body .navbar .nav-container {
   line-height: 1.7;
   font-weight: 400 !important;
 }
-
-/* Mobile */
 @media (max-width: 600px) {
   #wallet-orders {
     padding: 14px 12px;
   }
-
   #wallet-drawer .wallet-order-item {
     padding: 14px;
   }
-
   #wallet-drawer .wallet-header {
     padding: 16px 18px;
   }
 }
-

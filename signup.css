@@ -1,9 +1,6 @@
+/* Urban Sole | Signup and My Account styles | Consolidated formatting */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-
-/* =========================================
-   URBAN SOLE — GLOBAL AUTH STYLES
-========================================= */
 
 * {
   margin: 0;
@@ -23,17 +20,18 @@ body {
 }
 
 button,
+
 input,
+
 textarea {
   font: inherit;
 }
 
 button,
+
 a {
   -webkit-tap-highlight-color: transparent;
 }
-
-/* Shared layout for login/account pages */
 
 .auth-container {
   min-height: 100vh;
@@ -104,6 +102,7 @@ a {
 }
 
 .form-group input,
+
 .form-group textarea {
   display: block;
   width: 100%;
@@ -117,8 +116,8 @@ a {
   font-size: 14px;
   line-height: 1.5;
   outline: none;
-  transition:
-    border-color 0.2s ease,
+  transition: border-color 0.2s ease,
+
     box-shadow 0.2s ease;
 }
 
@@ -128,6 +127,7 @@ a {
 }
 
 .form-group input:focus,
+
 .form-group textarea:focus {
   border-color: #111;
 }
@@ -143,8 +143,8 @@ a {
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
+  transition: background 0.2s ease,
+
     transform 0.2s ease;
 }
 
@@ -210,37 +210,44 @@ a {
   text-decoration: underline;
 }
 
-/* =========================================
-   PREMIUM SIGNUP PAGE BACKGROUND
-========================================= */
-
 body:has(#signup-form) {
   overflow-x: hidden;
-  background:
-    linear-gradient(
+  background: linear-gradient(
+
       125deg,
+
       transparent 0%,
+
       transparent 76%,
+
       #ffbf00 76%,
+
       #ffbf00 84%,
+
       transparent 84%
+
     ),
+
     repeating-linear-gradient(
+
       135deg,
+
       #f9f5f1 0px,
+
       #f9f5f1 135px,
+
       #f1ebe6 135px,
+
       #f1ebe6 270px
+
     );
   background-attachment: fixed;
 }
 
-/* Desktop two-column layout */
-
 body:has(#signup-form) .auth-container {
   display: grid;
-  grid-template-columns:
-    minmax(0, 1fr)
+  grid-template-columns: minmax(0, 1fr)
+
     minmax(0, 560px);
   align-items: center;
   gap: clamp(24px, 4vw, 70px);
@@ -249,10 +256,6 @@ body:has(#signup-form) .auth-container {
   margin: 0 auto;
   padding: 45px 5%;
 }
-
-/* =========================================
-   LEFT BRANDING PANEL
-========================================= */
 
 .signup-brand-panel {
   position: relative;
@@ -329,10 +332,6 @@ body:has(#signup-form) .auth-container {
   user-select: none;
 }
 
-/* =========================================
-   RIGHT SIGNUP CARD
-========================================= */
-
 body:has(#signup-form) .auth-card {
   position: relative;
   z-index: 2;
@@ -342,8 +341,8 @@ body:has(#signup-form) .auth-card {
   background: rgba(255, 255, 255, 0.97);
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 30px;
-  box-shadow:
-    0 30px 85px rgba(45, 32, 22, 0.14),
+  box-shadow: 0 30px 85px rgba(45, 32, 22, 0.14),
+
     0 5px 20px rgba(45, 32, 22, 0.05);
 }
 
@@ -387,6 +386,7 @@ body:has(#signup-form) .form-group label {
 }
 
 body:has(#signup-form) .form-group input,
+
 body:has(#signup-form) .form-group textarea {
   width: 100%;
   max-width: 100%;
@@ -401,6 +401,7 @@ body:has(#signup-form) .form-group textarea {
 }
 
 body:has(#signup-form) .form-group input:focus,
+
 body:has(#signup-form) .form-group textarea:focus {
   background: #fff;
   border-color: #dba500;
@@ -439,10 +440,6 @@ body:has(#signup-form) .auth-footer a {
   text-underline-offset: 4px;
 }
 
-/* =========================================
-   WALKING BOY + MOVING GROUND SHADOW
-========================================= */
-
 .walking-boy-scene {
   position: fixed;
   bottom: 12px;
@@ -464,7 +461,6 @@ body:has(#signup-form) .auth-footer a {
   animation: walk-across 14s linear infinite;
 }
 
-/* Shadow follows the character */
 .walking-boy-scene::after {
   content: "";
   position: absolute;
@@ -497,10 +493,6 @@ body:has(#signup-form) .auth-footer a {
     transform: translateX(100vw);
   }
 }
-
-/* =========================================
-   TABLET RESPONSIVENESS
-========================================= */
 
 @media (max-width: 900px) {
   body:has(#signup-form) .auth-container {
@@ -547,17 +539,16 @@ body:has(#signup-form) .auth-footer a {
   }
 }
 
-/* =========================================
-   MOBILE RESPONSIVENESS
-========================================= */
-
 @media (max-width: 600px) {
   body:has(#signup-form) {
-    background:
-      linear-gradient(
+    background: linear-gradient(
+
         135deg,
+
         #faf7f2,
+
         #f0ebe5
+
       );
     background-attachment: scroll;
   }
@@ -610,6 +601,7 @@ body:has(#signup-form) .auth-footer a {
   }
 
   body:has(#signup-form) .form-group input,
+
   body:has(#signup-form) .form-group textarea {
     font-size: 16px;
     padding: 14px;
@@ -637,10 +629,6 @@ body:has(#signup-form) .auth-footer a {
   }
 }
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -651,12 +639,7 @@ body:has(#signup-form) .auth-footer a {
   }
 }
 
-/* =====================================
-   FIXED BRANDING + SCROLLABLE FORM
-===================================== */
-
 @media (min-width: 901px) {
-
   body:has(#signup-form) .auth-container {
     align-items: start;
   }
@@ -680,13 +663,9 @@ body:has(#signup-form) .auth-footer a {
   body:has(#signup-form) .auth-card {
     align-self: start;
   }
-
 }
 
-/* MOBILE AND TABLET */
-
 @media (max-width: 900px) {
-
   .signup-brand-panel {
     position: relative;
     top: auto;
@@ -697,36 +676,42 @@ body:has(#signup-form) .auth-footer a {
   body:has(#signup-form) .auth-container {
     align-items: center;
   }
-
 }
 
-/* =========================================
-   URBAN SOLE — PREMIUM MY ACCOUNT PAGE
-========================================= */
-
-/* Account page background */
 body:has(#account-card) {
   min-height: 100vh;
-  background:
-    linear-gradient(
+  background: linear-gradient(
+
       125deg,
+
       transparent 0%,
+
       transparent 76%,
+
       #ffbf00 76%,
+
       #ffbf00 84%,
+
       transparent 84%
+
     ),
+
     repeating-linear-gradient(
+
       135deg,
+
       #f9f5f1 0px,
+
       #f9f5f1 135px,
+
       #f1ebe6 135px,
+
       #f1ebe6 270px
+
     );
   background-attachment: fixed;
 }
 
-/* Premium account card */
 #account-card {
   max-width: 500px;
   padding: 42px;
@@ -736,7 +721,6 @@ body:has(#account-card) {
   box-shadow: 0 25px 70px rgba(45, 32, 22, 0.13);
 }
 
-/* Urban Sole branding */
 #account-card .auth-header h1 {
   display: inline-block;
   padding-bottom: 10px;
@@ -745,14 +729,12 @@ body:has(#account-card) {
   letter-spacing: 3px;
 }
 
-/* Account heading */
 #account-card .auth-header h2 {
   font-size: 28px;
   font-weight: 800;
   color: #111;
 }
 
-/* Account information */
 #account-card .form-group {
   padding: 16px 18px;
   background: #faf7f2;
@@ -774,7 +756,6 @@ body:has(#account-card) {
   overflow-wrap: anywhere;
 }
 
-/* Logout button */
 #account-card #signup-btn {
   margin-top: 20px;
   padding: 17px;
@@ -790,15 +771,20 @@ body:has(#account-card) {
   transform: translateY(-2px);
 }
 
-/* Mobile responsiveness */
 @media (max-width: 600px) {
   body:has(#account-card) {
     background: repeating-linear-gradient(
+
       135deg,
+
       #f9f5f1 0px,
+
       #f9f5f1 90px,
+
       #f1ebe6 90px,
+
       #f1ebe6 180px
+
     );
   }
 
