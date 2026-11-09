@@ -63,7 +63,7 @@ onAuthStateChanged(auth, async (user) => {
     const result = await response.json();
 
     if (result.profile) {
-      window.location.replace("index.html");
+      window.location.replace("../index.html");
     }
 
   } catch (error) {
@@ -140,7 +140,7 @@ const whatsapp = whatsappInput.value.trim();
 
     showMessage("Profile saved successfully!", "success");
 
-    window.location.replace("index.html");
+    window.location.replace("../index.html");
 
   } catch (error) {
     console.error("Save profile error:", error);

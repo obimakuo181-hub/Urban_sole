@@ -49,7 +49,7 @@ loginForm.addEventListener("submit", async (event) => {
     showMessage("Login successful! Redirecting...", "success");
 
     if (profile) {
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
     } else {
       window.location.href = "full_profile.html";
     }

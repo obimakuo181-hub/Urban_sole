@@ -7,7 +7,7 @@
 // PRODUCTS
 // ========================================
 
-import { auth } from "./firebase-config.js";
+import { auth } from "../auth/firebase-config.js";
 
 import { onAuthStateChanged } from
   "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
@@ -1276,7 +1276,7 @@ document.addEventListener(
   alert(error.message);
 
     if (error.message.includes("log in")) {
-    window.location.href = "login.html";
+    window.location.href = "pages/login.html";
   }
 }
 

@@ -14,7 +14,7 @@ if (accountBtn) {
 
     if (user && user.emailVerified) {
       // Customer is logged in and verified
-      accountBtn.href = "account.html";
+      accountBtn.href = "pages/account.html";
       accountBtn.title = "My Account";
       accountBtn.setAttribute(
         "aria-label",
@@ -23,7 +23,7 @@ if (accountBtn) {
 
     } else {
       // Customer is not logged in
-      accountBtn.href = "login.html";
+      accountBtn.href = "pages/login.html";
       accountBtn.title = "Log In";
       accountBtn.setAttribute(
         "aria-label",
